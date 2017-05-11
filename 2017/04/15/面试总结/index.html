@@ -1,0 +1,648 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>面试1 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="bigcong">
+    
+
+    
+    <meta name="description" content="java的内存分配策略 程序运行当中，内存分为三种策略，分别是栈式，堆式，静态的， 静态分配是指在编译的时候每个数据目标在运行时刻所需要的存储空间，因此在编译的时候就可以给他们分配的固定的内存空间，这种分配策略要求程序代码当中不能有可变的数据结构（比如可变的数组结构），不允许有嵌套和递归结构出现，因为他们编译的时候无法准确计算出所需的存储空间 栈式存储分配也可以称为动态分配，和静态存储分配相反，栈">
+<meta name="keywords" content="总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试1">
+<meta property="og:url" content="http://yoursite.com/2017/04/15/面试总结/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="java的内存分配策略 程序运行当中，内存分为三种策略，分别是栈式，堆式，静态的， 静态分配是指在编译的时候每个数据目标在运行时刻所需要的存储空间，因此在编译的时候就可以给他们分配的固定的内存空间，这种分配策略要求程序代码当中不能有可变的数据结构（比如可变的数组结构），不允许有嵌套和递归结构出现，因为他们编译的时候无法准确计算出所需的存储空间 栈式存储分配也可以称为动态分配，和静态存储分配相反，栈">
+<meta property="og:updated_time" content="2017-05-11T12:18:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试1">
+<meta name="twitter:description" content="java的内存分配策略 程序运行当中，内存分为三种策略，分别是栈式，堆式，静态的， 静态分配是指在编译的时候每个数据目标在运行时刻所需要的存储空间，因此在编译的时候就可以给他们分配的固定的内存空间，这种分配策略要求程序代码当中不能有可变的数据结构（比如可变的数组结构），不允许有嵌套和递归结构出现，因为他们编译的时候无法准确计算出所需的存储空间 栈式存储分配也可以称为动态分配，和静态存储分配相反，栈">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/04/15/面试总结/" title="面试1" itemprop="url">面试1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-15T05:25:00.000Z" itemprop="datePublished"> 发表于 2017-04-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#java的内存分配策略"><span class="toc-number">1.</span> <span class="toc-text">java的内存分配策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jvm的堆和栈"><span class="toc-number">2.</span> <span class="toc-text">jvm的堆和栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java的equals和hashcode"><span class="toc-number">3.</span> <span class="toc-text">java的equals和hashcode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-索引原理"><span class="toc-number">4.</span> <span class="toc-text">mysql 索引原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-引擎"><span class="toc-number">5.</span> <span class="toc-text">mysql 引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-aop-原理"><span class="toc-number">6.</span> <span class="toc-text">spring aop 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka如何避免丢消息"><span class="toc-number">7.</span> <span class="toc-text">kafka如何避免丢消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步异步和阻塞和非阻塞"><span class="toc-number">8.</span> <span class="toc-text">同步异步和阻塞和非阻塞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList和linkedList的区别"><span class="toc-number">9.</span> <span class="toc-text">ArrayList和linkedList的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string-StringBuilder-StringBuffer"><span class="toc-number">10.</span> <span class="toc-text">string ,StringBuilder,StringBuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM内存管理"><span class="toc-number">11.</span> <span class="toc-text">JVM内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#堆"><span class="toc-number">11.1.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#新生代"><span class="toc-number">11.1.1.</span> <span class="toc-text">新生代</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#旧生代"><span class="toc-number">11.1.2.</span> <span class="toc-text">旧生代</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#栈"><span class="toc-number">11.2.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地方法栈"><span class="toc-number">11.3.</span> <span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法区"><span class="toc-number">11.4.</span> <span class="toc-text">方法区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收机制"><span class="toc-number">12.</span> <span class="toc-text">垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新生代GC"><span class="toc-number">12.1.</span> <span class="toc-text">新生代GC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#旧生代GC"><span class="toc-number">12.2.</span> <span class="toc-text">旧生代GC</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="java的内存分配策略"><a href="#java的内存分配策略" class="headerlink" title="java的内存分配策略"></a>java的内存分配策略</h3><ul>
+<li>程序运行当中，内存分为三种策略，分别是栈式，堆式，静态的，</li>
+<li>静态分配是指在编译的时候每个数据目标在运行时刻所需要的存储空间，因此在编译的时候就可以给他们分配的固定的内存空间，这种分配策略要求程序代码当中不能有可变的数据结构（比如可变的数组结构），不允许有嵌套和递归结构出现，因为他们编译的时候无法准确计算出所需的存储空间</li>
+<li>栈式存储分配也可以称为动态分配，和静态存储分配相反，栈式分配的时候，程序对数区的分配是完全未知的，只有运行的时候才知道，但是规定在运行中进入一个程序模块时，必须知道该程序模块的所需的数据区的大小才能为其分配内存，栈式存储分配按照先进后出的原则进行分配的</li>
+<li>堆式分配则专门负责在编译时或运行时模块入口处都无法确定存储要求的数据结构的内存分配，比如可变的字符串和对象实例，堆由大片的可用块或者空闲块组成，堆的内存可以按照任意的分配和释放</li>
+</ul>
+<h3 id="jvm的堆和栈"><a href="#jvm的堆和栈" class="headerlink" title="jvm的堆和栈"></a>jvm的堆和栈</h3><ul>
+<li>栈内存：一些基本类型的变量和对象的引用变量都是在函数的堆内存中分配的，java在栈中分配内存的时候，当超过变量的作用域的时候，java会自动释放为该变量分配的内存空间，该内存空间可以立即被另作他用</li>
+<li>堆内存：用于存储new创建的对象和数组，jvm自动垃圾回收机制来管理。数组和对象在没有引用变量指向它的时候，就会变为垃圾，随后在一个不确定的时间会被垃圾回收机制释放掉，这也是java比较耗内存的原因</li>
+<li>堆主要用来存储对象的，栈主要用来执行程序的</li>
+<li>jvm是基于堆栈的虚拟机，jvm为每个新创建的线程分配一个堆栈，也就说<br>它的运用基于堆栈操作来完成的</li>
+</ul>
+<h3 id="java的equals和hashcode"><a href="#java的equals和hashcode" class="headerlink" title="java的equals和hashcode"></a>java的equals和hashcode</h3><ul>
+<li>java的数据类型分为两类，一类为基本数组类型（byte，short，char，int等），他们之间的比较，应用双等号，比较是他们的值，一类为引用类型（数组，类），比较的是他们内存存放地址，对象存放在堆中，栈中存放对象的引用地址</li>
+<li>java的默认equals方法，是直接调用==，比较对象的地址</li>
+<li>hashcode方法，直接返回32位对象在jvm的地址</li>
+<li>很好理解，你和另一个人的体重（HASH CODE）可能一样，但是你们不是同一个人（EQUAL）</li>
+</ul>
+<h3 id="mysql-索引原理"><a href="#mysql-索引原理" class="headerlink" title="mysql 索引原理"></a>mysql 索引原理</h3><ul>
+<li>当数据存放在磁盘介质上的时候，它被当作一个整体来访问的，这样可以保持数据的原子性。数据存储的结构类似链表，都包含数据部分，以及一个指向下一个节点指针，不需要连续存储的</li>
+<li>记录集如果在一个无序字段上进行排序的话，需要执行一个线性搜索（linear search），平均访问N/2的数据块，N代表数据块的数目。如果这个字段是一个非关键字段，那么需要N个数据块搜索整个表空间</li>
+<li>但是对一个有序的字段，可以运用二分查找，这样只要访问log2的数据块</li>
+<li>索引是对记录集的多个字段进行排序的方法。在一张表中为一个字段创建索引，将创建另外一个数据结构，包含字段数值以及指向相关记录的指针，然后对这个索引结构进行排序，允许在该数据上进行二分法排序</li>
+<li>副作用就是索引需要额外的磁盘空间，对于myISAM引擎来说，这些索引是被统一保存到一张表中，这个文件很快达到了文件系统的支持的大小</li>
+</ul>
+<h3 id="mysql-引擎"><a href="#mysql-引擎" class="headerlink" title="mysql 引擎"></a>mysql 引擎</h3><ul>
+<li><p>ISAM  </p>
+<ul>
+<li>优点：执行读取操作的速度很快，不占用内存和存储资源</li>
+<li>缺点：是不支持事务处理，如果硬盘崩溃了，那么数据文件就无法恢复，所以必须经常备份你所有的实时数据</li>
+</ul>
+</li>
+<li><p>MyISAM  </p>
+<ul>
+<li>是ISAM扩展格式和缺省数据库引擎。除了提供ISAM里所没有的索引和字段管理的大量功能，MyISAM还使用一种表格锁定的机制，来优化多个并发对象操作。其代价是你需要经常运行OPTIMIZE TABLE命令，来恢复被更新机制所浪费的空间。myISAM还有一些有用的扩展，修复数据库文件和恢复浪费空间MYISAMPACk工具</li>
+<li>MyISAM强调快速读取，在web开发中进行大量操作都是读取操作，大部分虚拟主句提供商只允许myISAM格式</li>
+</ul>
+</li>
+<li>HEAP<ul>
+<li>是允许只只驻留在内存的临时表格，驻留在内存的HEAP比ISAM和MyISAM多要快，但是管理数据是不稳定的，所以如果在关机之前没有保存数据的话，那么所有的数据都会丢失，在删除行的时候，HEAP不会浪费大量的空间。HEAP在使用select表达式来选择和操控数据的时候非常有用，在用完表格的时候，就删除表格</li>
+</ul>
+</li>
+<li>InnoDB和Berkley DB<ul>
+<li>比ISAM和MYISAM慢的多，但是对事物的处理和外键的支持</li>
+</ul>
+</li>
+</ul>
+<h3 id="spring-aop-原理"><a href="#spring-aop-原理" class="headerlink" title="spring aop 原理"></a>spring aop 原理</h3><ul>
+<li>OOP 引入了封装类，继承，多态等特性，用以模拟公共行为的集合，如果我们为对象引入一些公共的行为的部分的时候，oop就会引入重复的代码</li>
+<li>Aop技术利用一种叫做横切的技术，解剖封装对象内部，并将那些的多个类的功能行为封装到一个可重用模块，降低了系统的代码的重复，降低了代码直接的耦合度，并且有利于未来的可操作性和可维护性。aop把系统分为两个模块，横切关注点和核心关注点。业务处理主要流程是核心关注点，与之不大的横切关注点</li>
+<li>aop的主要分为动态代理和静态代理</li>
+<li>静态代理是指目标对象和代理对象实现共同的接口，并且对象有目标的引用</li>
+<li>动态代理实现了InvocationHandler，并且将目标的对象注射到代理对象当中，并行通过反射机制来执行目标代码</li>
+</ul>
+<h3 id="kafka如何避免丢消息"><a href="#kafka如何避免丢消息" class="headerlink" title="kafka如何避免丢消息"></a>kafka如何避免丢消息</h3><ul>
+<li>kafka生产者kakfaproducter.send方法仅仅是将消息队列放在一个缓存当中（recordaccumular）,本质上使用队列存储缓存记录，同时后台进程的IO线程不断扫描该区域，满足条件封装的时候，会将满足条件批次发送过去，如果这个过程有一个数据丢失的窗口，在io线程发送之前挂掉，就会可能丢数据</li>
+<li>consumer端丢失消息的情形比较简单：如何消息处理完成前就提交了offset，那么就有可能造成丢数据，enable.auto.commit=false  关闭自动提交位移，在消息提交之后，在手动提交</li>
+</ul>
+<h3 id="同步异步和阻塞和非阻塞"><a href="#同步异步和阻塞和非阻塞" class="headerlink" title="同步异步和阻塞和非阻塞"></a>同步异步和阻塞和非阻塞</h3><h3 id="ArrayList和linkedList的区别"><a href="#ArrayList和linkedList的区别" class="headerlink" title="ArrayList和linkedList的区别"></a>ArrayList和linkedList的区别</h3><ul>
+<li>ArrayList的内部实现是基于对象数组的，因此get方法方法任意每一个元素的，它的速度都要比linkedList的速度要快，linkedlist的get方法是按照顺序从列表的一端开始检查，直到另一端，因为linkedList需要移动指针，linkedList是基于链表的数据结构的</li>
+<li>但是当需要对列表进行大量的插入和删除操作的时候，linkedList的速度要比Arraylist要快，因为ArrayList每插入一条数据，都要移动插入点之后的所有数据</li>
+<li>ArrayList使用是一个内部数组，这个数组初始值长度为10，当需要增长时，数组会增长为（旧容量*3）／2+1，每次大概增长50%，如果一个ArrayList包含大量的元素的时候，那么就会大量的空间会被浪费掉，如果知道ArrayList将会有多少个元素，我们可以构造方法来指定容量，我们还可以trimToSize去掉浪费的空间</li>
+<li>ArrayList，LinkedList都是线程不安全的，Vector是线程安全的，是因为Vector加了线程锁</li>
+<li>另外HashMap是非线程安全的，允许为null值作为key，，HashTable是线程安全的；StringBuilder是非线程安全的，StringBuffer是线程安全的。</li>
+<li>数组静态分配内存，链表动态分配内存；数组在内存中连续，链表不连续；数组元素在栈区，链表元素在堆区；   </li>
+</ul>
+<h3 id="string-StringBuilder-StringBuffer"><a href="#string-StringBuilder-StringBuffer" class="headerlink" title="string ,StringBuilder,StringBuffer"></a>string ,StringBuilder,StringBuffer</h3><ul>
+<li>String是不可变的对象，实际上在不断的创建新的对象，而原来的对象会变成垃圾不断的被GC回收，效率非常低下</li>
+<li>StringBuilder和StringBuffer，是字符串变量，是可变的对象，对字符串操作的时候，不会创建额外的对象，减少了内存开销</li>
+<li>StringBuilder是线程不安全的，适合单线，StringBuffer是线程安全的，适合多线程的 </li>
+</ul>
+<h3 id="JVM内存管理"><a href="#JVM内存管理" class="headerlink" title="JVM内存管理"></a>JVM内存管理</h3><h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><ul>
+<li>所有通过new关键字的对象的内存都在堆内存分配，其大小可以通过-Xmx，-Xms来控制。堆被划分为新生代和旧生代，新生代又被分为Eden和survivor，最后survivior是由from Space和to Space组成</li>
+</ul>
+<h5 id="新生代"><a href="#新生代" class="headerlink" title="新生代"></a>新生代</h5><ul>
+<li>新建的对象都是由新生代分配内存的，Eden内存不足的时候，会把存活的对象转移到survivior,-XX:SurvivorRatio可以调节eden和survivor的比例</li>
+</ul>
+<h5 id="旧生代"><a href="#旧生代" class="headerlink" title="旧生代"></a>旧生代</h5><ul>
+<li>用以存放新生代中多次垃圾回收仍然存在的对象   </li>
+</ul>
+<h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><ul>
+<li>每个线程执行每个方法的时候，都会在栈中申请一个栈桢，每个栈桢包括局部变量区和操作数栈，用于存放调用过程中的临时变量，参数和中间结果   </li>
+</ul>
+<h4 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h4><ul>
+<li>用以支持native方法的执行，存储每个native的状态</li>
+</ul>
+<h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><ul>
+<li>存放加载类的信息，静态变量，final类型的常量，属性和方法，jvm用持久化来存放方法区，-XX:PermSize和-XX:MaxPermSize来指定最小值和最大值    </li>
+</ul>
+<h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><h4 id="新生代GC"><a href="#新生代GC" class="headerlink" title="新生代GC"></a>新生代GC</h4><ul>
+<li>新生代通常存活时间很短，因此基于copying算法回收，就是扫描存活对象，并复制到一块未被使用的空间，即使从from space到to space，新生代采用空闲指针的方式来控制GC的触发，指针始终保持最后一个分配的对象，在新生代中，当由新的对象分配内存的时候，用以检查是否内存空间足够，不够就触发GC，当连续分配对象的时候，对象逐渐由eden到survivior，最后到旧生代，如果旧生代满了之后，outofmemory异常</li>
+<li>在执行机制上提供了串行GC，并行回收GC和并行GC</li>
+<li>串行GC，适用于当CPU，新生代空间较小以及暂停时间要求不高的应用上，client</li>
+<li>并行回收GC，在整个扫描和复制过程当中采用多线程，适用于多CPU，暂停时间短的应用上，server</li>
+<li>并行GC，与旧生代的并发GC配合使用</li>
+</ul>
+<h4 id="旧生代GC"><a href="#旧生代GC" class="headerlink" title="旧生代GC"></a>旧生代GC</h4><ul>
+<li>旧生代GC，对象存放时间长，比较稳定，采用mark标记算法来回收，所谓的标记就是扫描出存活的对象，然后再回收未被标记的对象，回收之后的空间进行合并，那么标记出来便于下次进行分配，总之减少内存随便带来的效率损耗</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/总结/">总结</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2017/04/15/面试总结/" data-title="面试1 | Hexo" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/04/20/面试2/" title="kafka">
+  <strong>上一篇：</strong><br/>
+  <span>
+  kafka</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/04/14/hello-world/"  title=" 树莓派一些总结">
+ <strong>下一篇：</strong><br/> 
+ <span> 树莓派一些总结
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8yODYxOC81MTg5">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#java的内存分配策略"><span class="toc-number">1.</span> <span class="toc-text">java的内存分配策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jvm的堆和栈"><span class="toc-number">2.</span> <span class="toc-text">jvm的堆和栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java的equals和hashcode"><span class="toc-number">3.</span> <span class="toc-text">java的equals和hashcode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-索引原理"><span class="toc-number">4.</span> <span class="toc-text">mysql 索引原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-引擎"><span class="toc-number">5.</span> <span class="toc-text">mysql 引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-aop-原理"><span class="toc-number">6.</span> <span class="toc-text">spring aop 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka如何避免丢消息"><span class="toc-number">7.</span> <span class="toc-text">kafka如何避免丢消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步异步和阻塞和非阻塞"><span class="toc-number">8.</span> <span class="toc-text">同步异步和阻塞和非阻塞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList和linkedList的区别"><span class="toc-number">9.</span> <span class="toc-text">ArrayList和linkedList的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string-StringBuilder-StringBuffer"><span class="toc-number">10.</span> <span class="toc-text">string ,StringBuilder,StringBuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM内存管理"><span class="toc-number">11.</span> <span class="toc-text">JVM内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#堆"><span class="toc-number">11.1.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#新生代"><span class="toc-number">11.1.1.</span> <span class="toc-text">新生代</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#旧生代"><span class="toc-number">11.1.2.</span> <span class="toc-text">旧生代</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#栈"><span class="toc-number">11.2.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地方法栈"><span class="toc-number">11.3.</span> <span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法区"><span class="toc-number">11.4.</span> <span class="toc-text">方法区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收机制"><span class="toc-number">12.</span> <span class="toc-text">垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新生代GC"><span class="toc-number">12.1.</span> <span class="toc-text">新生代GC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#旧生代GC"><span class="toc-number">12.2.</span> <span class="toc-text">旧生代GC</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="bigcong" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/总结/" title="总结">总结<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/日记/" title="日记">日记<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/教程/" title="教程">教程<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/kafka/" title="kafka">kafka<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程/" title="多线程">多线程<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="www.niu.com" target="_blank" title="小牛电动">小牛电动</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="www.12lian.com" target="_blank" title="12 lian">12 lian</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m da cong. <br/>
+			This is my story.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2549820157" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/bigcong" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:cuicong0715@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="bigcong">bigcong</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

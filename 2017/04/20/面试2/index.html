@@ -1,0 +1,610 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>kafka | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="bigcong">
+    
+
+    
+    <meta name="description" content="1. 介绍 kafka能对消息根据topic进行分类，发消息者成为生产者，接收的消息的成为消费者，kafka集群有多个实例组成，每个实例都成为了broker，无论kafka集群，还是生产者或者消费者都要依赖于zookeeper来保证系统可用性  Topics／logs 一个topic可以认为一类分类消息，每个topic将被分为不同的区，每个区存储的都是append log文件，认为发布到此区的的消">
+<meta name="keywords" content="kafka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kafka">
+<meta property="og:url" content="http://yoursite.com/2017/04/20/面试2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. 介绍 kafka能对消息根据topic进行分类，发消息者成为生产者，接收的消息的成为消费者，kafka集群有多个实例组成，每个实例都成为了broker，无论kafka集群，还是生产者或者消费者都要依赖于zookeeper来保证系统可用性  Topics／logs 一个topic可以认为一类分类消息，每个topic将被分为不同的区，每个区存储的都是append log文件，认为发布到此区的的消">
+<meta property="og:updated_time" content="2017-05-11T12:18:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kafka">
+<meta name="twitter:description" content="1. 介绍 kafka能对消息根据topic进行分类，发消息者成为生产者，接收的消息的成为消费者，kafka集群有多个实例组成，每个实例都成为了broker，无论kafka集群，还是生产者或者消费者都要依赖于zookeeper来保证系统可用性  Topics／logs 一个topic可以认为一类分类消息，每个topic将被分为不同的区，每个区存储的都是append log文件，认为发布到此区的的消">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/04/20/面试2/" title="kafka" itemprop="url">kafka</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-20T01:11:00.000Z" itemprop="datePublished"> 发表于 2017-04-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-介绍"><span class="toc-number">1.</span> <span class="toc-text">1. 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Topics／logs"><span class="toc-number">1.1.</span> <span class="toc-text">Topics／logs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#producers"><span class="toc-number">1.2.</span> <span class="toc-text">producers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#consumers"><span class="toc-number">1.3.</span> <span class="toc-text">consumers</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-使用场景"><span class="toc-number">2.</span> <span class="toc-text">2.    使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Messaging"><span class="toc-number">2.1.</span> <span class="toc-text">Messaging</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Websit-activity-tracking"><span class="toc-number">2.2.</span> <span class="toc-text">Websit activity tracking</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#log-Aggregation"><span class="toc-number">2.3.</span> <span class="toc-text">log Aggregation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设计原理"><span class="toc-number">3.</span> <span class="toc-text">3. 设计原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#持久性"><span class="toc-number">3.1.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#性能"><span class="toc-number">3.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生产者"><span class="toc-number">3.3.</span> <span class="toc-text">生产者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消费者"><span class="toc-number">3.4.</span> <span class="toc-text">消费者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消息传送机制"><span class="toc-number">3.5.</span> <span class="toc-text">消息传送机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复制备份"><span class="toc-number">3.6.</span> <span class="toc-text">复制备份</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. <em>介绍</em></h3><ul>
+<li>kafka能对消息根据topic进行分类，发消息者成为生产者，接收的消息的成为消费者，kafka集群有多个实例组成，每个实例都成为了broker，无论kafka集群，还是生产者或者消费者都要依赖于zookeeper来保证系统可用性</li>
+</ul>
+<h4 id="Topics／logs"><a href="#Topics／logs" class="headerlink" title="Topics／logs"></a>Topics／logs</h4><ul>
+<li>一个topic可以认为一类分类消息，每个topic将被分为不同的区，每个区存储的都是append log文件，认为发布到此区的的消息，都会追加的append log尾部，每个消息的在文件的位置称偏移量，也就是offset，offset是一个long的数字，它是标记唯一消息。</li>
+<li>kafka和activeMQ不同是，即使消息被消费，消息也不会立即被删除，日志文件会根据broker的配置要求，来保证一段时间之后删除，如果到达一段时间之后，无论消息是否被消费，文件都会被清除，来释放磁盘空间，从而减少磁盘IO</li>
+<li>对于消费者而言，它需要保持消费消息的offset，对于offset的保存和使用，需要消费者来控制，当消费者正常消费消息的时候，offset将会线性的往前驱动，即消息将依次顺序被消费事实上消费者可以任意消费消息的，只需要重置offset为任意值（offset保存在zooper中）</li>
+<li>kakfa集群几乎不需要维护生产者和消费者状态信息，这些信息都有zookeeper保存，因此消费者和生产者都是轻量级的，他们可以随意的离开，而不会对系统造成额外的影响</li>
+<li>一个topic可一个多个分区，会被分布到kafka集群多个实例上，每个server负责分区的消息的读写操作，每个分区还可以设置备份数，每个分区可以备份到多台机器上，提高可用性</li>
+<li>基于备份方案，那就意味需要对多个备份方案进行任务调度，每个分区server上多一个leader进行读写操作，如果leader失效，那么他的follower来接管，follower只是单调的和leader跟进，同步消息而已，由此可见作为leader的server承载了全部的请求压力，因此从集群的整体考虑，有多少个分区就有多少个leader，kakfa会将leader均衡分散到每个实例当中，来确保整体性能</li>
+</ul>
+<h4 id="producers"><a href="#producers" class="headerlink" title="producers"></a>producers</h4><ul>
+<li>生产者将消息发送到指定的topic下，同时也决定了此消息属于哪个分区，基于round-robin方式</li>
+</ul>
+<h4 id="consumers"><a href="#consumers" class="headerlink" title="consumers"></a>consumers</h4><ul>
+<li>每个消费者都是属于一个消费者组，每一个组也都有多个消费者，发送消息只会被订阅此消息的消费者消费</li>
+<li>如果所有的消费者都相同的消费者组，消息将会在consumers之间负载均衡.</li>
+<li>如果所有的consumer都具有不同的group,那这就是”发布-订阅”;消息将会广播给所有的消费者.</li>
+<li>分区的消息只能被一个group中一个消费者消费，每个group的消费者都是相互独立的，因此我们可以说成group是一个订阅者<br>kakfa只能保证同一个分区的时候，被某个消费者消费数据是顺序的，从topic消息的角度消息，消息不是有序的</li>
+</ul>
+<hr>
+<h3 id="2-使用场景"><a href="#2-使用场景" class="headerlink" title="2.    使用场景"></a>2.    <em>使用场景</em></h3><h4 id="Messaging"><a href="#Messaging" class="headerlink" title="Messaging"></a>Messaging</h4><ul>
+<li>分区和备份，可以是使kakfa具有良好的扩展性和性能优势，但是kafka没有提供jms的事物性，在一定程度上不能确保消息的发送和接收绝对可靠（消息重发，消息发送丢失）</li>
+</ul>
+<h4 id="Websit-activity-tracking"><a href="#Websit-activity-tracking" class="headerlink" title="Websit activity tracking"></a>Websit activity tracking</h4><ul>
+<li>可以将网页和用户操作信息发送kafka当中，并实时监控或者离线分析<h4 id="log-Aggregation"><a href="#log-Aggregation" class="headerlink" title="log Aggregation"></a>log Aggregation</h4></li>
+<li>应用可以将日志批量的异步的发送到kakfa集群当中，而不是保存在本地或者DB当中，kafka可以批量的提交消息和压缩消息，此外消费者可以利用hadoop等系统话的存储和分析系统</li>
+</ul>
+<hr>
+<h3 id="3-设计原理"><a href="#3-设计原理" class="headerlink" title="3. 设计原理"></a>3. <em>设计原理</em></h3><h4 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h4><ul>
+<li>kakfa对日志文件进行的append操作的，因此对磁盘索引开销是非常小的，同时为了减少磁盘的写入次数，broker会将消息buffer起来，到达某个值之后，就会写入磁盘，这样减少了磁盘的IO次数</li>
+</ul>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><ul>
+<li>对于producer端,可以将消息buffer起来,当消息的条数达到一定阀值时,批量发送给broker，对于消费者来也一样，批量fetch多条消息。对于kakfa broker，会将文件直接映射到系统内存当中，socket直接读取相应的内存即可，无需进行copy和交换。不过对于kafka而言，网络IO更加重要，可以将任意消息进行压缩，kakfa支持多种压缩方式，gzip和snappy等多种压缩方式</li>
+</ul>
+<h4 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h4><ul>
+<li>负载均衡：生产者会和所有的topic下所有的分区的保持socket连接，生产者可以直接通过socket发送到broker，中间不会通过任何路由，消息究竟发送到那个路由上，指根据随机“key-hash”轮询的方式，于是就实现的负载均衡</li>
+<li>其中分区的leader位置，注册到zookeepr当中，生产者作为zookeeper的client端，已经注册watch监听分区的变更事件</li>
+<li>异步发送：将多条消息buffer起来，批量发送到broker，小数据发送太多，会整体拖慢网络的延迟，批量发送提升了网路，但是当producer失效时，未送达消息为丢失</li>
+</ul>
+<h4 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h4><ul>
+<li>消费者向broker发送fetch请求的时候，并告知其获取消息的offset，此后将获取消息的一定数量，消费者也可以重置offset来重新消费消息</li>
+<li>JMS采取的PUSH的方式从broker获取消息，消费者和broker建立连接之后，主动去拉去pull仓库，首先生产者根据自己的消费能力，去fetch消息，且可以控制消息的进度offset，设置batch fetch可以控制</li>
+<li>其他jms，消费位置由prodiver保留的，以避免重复发送消息或者没有消费成功的消息重发，同时还要考虑消息的状态，这就要求broker需要承担额外的负担，然而在kafka当中，分区的消息只有一个消费者消费，且不存在消息状态的控制也没有复杂的消息确认机制，因此kakfa的broker是非常轻量级的，当消息被消费者接收之后，消费者可以保存最后消息的offset，然后向zookeer注册，因此消费者端也是轻量级的</li>
+</ul>
+<h4 id="消息传送机制"><a href="#消息传送机制" class="headerlink" title="消息传送机制"></a>消息传送机制</h4><ul>
+<li>JMS的实现消息传输担当非常直接，有且只有一次(exactly once)</li>
+<li><p>在kafa当中就不同了</p>
+<blockquote>
+<p>at more once:最多一次，发送一次，无论成败，就不会重发，消费者<br>在处理消息的时候，如果出现异常，导致部分消息没有未能继续处理，那么这些未处理的消息将不会fetch</p>
+<p>at least once:消息至少发送一次，如果消息未接受成功，可能重发，直到接受成功<br>消息者消费消息之后，然后保存offset之后，zookeepre发生异常，导致未能保存offset成功，这就导致了fetch上回已经处理的消息，</p>
+<p>exactly once: 消息只会发送一次</p>
+</blockquote>
+</li>
+<li>at least once 是我们首选的，因为重复数据总比丢失数据要好<h4 id="复制备份"><a href="#复制备份" class="headerlink" title="复制备份"></a>复制备份</h4></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/总结/">总结</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/kafka/">kafka</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2017/04/20/面试2/" data-title="kafka | Hexo" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/04/24/java多线程开发/" title="java多线程开发">
+  <strong>上一篇：</strong><br/>
+  <span>
+  java多线程开发</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/04/15/面试总结/"  title="面试1">
+ <strong>下一篇：</strong><br/> 
+ <span>面试1
+</span>
+</a>
+</div>
+
+</nav>
+
+	<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8yODYxOC81MTg5">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-介绍"><span class="toc-number">1.</span> <span class="toc-text">1. 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Topics／logs"><span class="toc-number">1.1.</span> <span class="toc-text">Topics／logs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#producers"><span class="toc-number">1.2.</span> <span class="toc-text">producers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#consumers"><span class="toc-number">1.3.</span> <span class="toc-text">consumers</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-使用场景"><span class="toc-number">2.</span> <span class="toc-text">2.    使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Messaging"><span class="toc-number">2.1.</span> <span class="toc-text">Messaging</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Websit-activity-tracking"><span class="toc-number">2.2.</span> <span class="toc-text">Websit activity tracking</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#log-Aggregation"><span class="toc-number">2.3.</span> <span class="toc-text">log Aggregation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设计原理"><span class="toc-number">3.</span> <span class="toc-text">3. 设计原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#持久性"><span class="toc-number">3.1.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#性能"><span class="toc-number">3.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生产者"><span class="toc-number">3.3.</span> <span class="toc-text">生产者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消费者"><span class="toc-number">3.4.</span> <span class="toc-text">消费者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消息传送机制"><span class="toc-number">3.5.</span> <span class="toc-text">消息传送机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复制备份"><span class="toc-number">3.6.</span> <span class="toc-text">复制备份</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="bigcong" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/总结/" title="总结">总结<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/日记/" title="日记">日记<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/教程/" title="教程">教程<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/kafka/" title="kafka">kafka<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程/" title="多线程">多线程<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="www.niu.com" target="_blank" title="小牛电动">小牛电动</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="www.12lian.com" target="_blank" title="12 lian">12 lian</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m da cong. <br/>
+			This is my story.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2549820157" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/bigcong" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:cuicong0715@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="bigcong">bigcong</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
