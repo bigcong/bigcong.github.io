@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>忙活的一天 | Hexo</title>
+    <title>git 相关操作 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="bigcong">
     
 
     
-    <meta name="description" content="忙活的一天 忙活的一天，身体有点累，眼睛也有点累，我也不知道今天为什么这么累，我今天也没有做什么有功劳的事情，说起来的几点话： 我把我的hexo的评论系统终于弄好了，我开始用disqus这个评论系统，我在上午的时候，还用的自得其乐，下午的听了挖矿的原理的之后，我就不能用了，于是我就很着急，最后才发现，被墙了，这是非常悲剧的原因，我们国家什么时候，能自信起来，不要像一个小孩一样，总之得到这个消息的时">
-<meta name="keywords" content="加班">
+    <meta name="description" content="git 回滚操作有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push -f">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="忙活的一天">
-<meta property="og:url" content="http://yoursite.com/2017/05/11/忙活的一天/index.html">
+<meta property="og:title" content="git 相关操作">
+<meta property="og:url" content="http://yoursite.com/2017/05/17/git-相关操作/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="忙活的一天 忙活的一天，身体有点累，眼睛也有点累，我也不知道今天为什么这么累，我今天也没有做什么有功劳的事情，说起来的几点话： 我把我的hexo的评论系统终于弄好了，我开始用disqus这个评论系统，我在上午的时候，还用的自得其乐，下午的听了挖矿的原理的之后，我就不能用了，于是我就很着急，最后才发现，被墙了，这是非常悲剧的原因，我们国家什么时候，能自信起来，不要像一个小孩一样，总之得到这个消息的时">
-<meta property="og:updated_time" content="2017-05-11T13:08:57.000Z">
+<meta property="og:description" content="git 回滚操作有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push -f">
+<meta property="og:updated_time" content="2017-05-17T08:47:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="忙活的一天">
-<meta name="twitter:description" content="忙活的一天 忙活的一天，身体有点累，眼睛也有点累，我也不知道今天为什么这么累，我今天也没有做什么有功劳的事情，说起来的几点话： 我把我的hexo的评论系统终于弄好了，我开始用disqus这个评论系统，我在上午的时候，还用的自得其乐，下午的听了挖矿的原理的之后，我就不能用了，于是我就很着急，最后才发现，被墙了，这是非常悲剧的原因，我们国家什么时候，能自信起来，不要像一个小孩一样，总之得到这个消息的时">
+<meta name="twitter:title" content="git 相关操作">
+<meta name="twitter:description" content="git 回滚操作有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push -f">
 
     
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -80,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/05/11/忙活的一天/" title="忙活的一天" itemprop="url">忙活的一天</a>
+      <a href="/2017/05/17/git-相关操作/" title="git 相关操作" itemprop="url">git 相关操作</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
 		
   <p class="article-time">
-    <time datetime="2017-05-11T13:08:00.000Z" itemprop="datePublished"> 发表于 2017-05-11</time>
+    <time datetime="2017-05-17T08:17:00.000Z" itemprop="datePublished"> 发表于 2017-05-17</time>
     
   </p>
 </header>
@@ -96,49 +96,29 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#忙活的一天"><span class="toc-number">1.</span> <span class="toc-text">忙活的一天</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回滚操作"><span class="toc-number">1.</span> <span class="toc-text">git 回滚操作</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="忙活的一天"><a href="#忙活的一天" class="headerlink" title="忙活的一天"></a>忙活的一天</h2><hr>
-<p>忙活的一天，身体有点累，眼睛也有点累，我也不知道今天为什么这么累，我今天也没有做什么有功劳的事情，说起来的几点话：</p>
-<p>我把我的hexo的评论系统终于弄好了，我开始用disqus这个评论系统，我在上午的时候，还用的自得其乐，下午的听了挖矿的原理的之后，我就不能用了，于是我就很着急，最后才发现，被墙了，这是非常悲剧的原因，我们国家什么时候，能自信起来，不要像一个小孩一样，总之得到这个消息的时候，我很无奈了，后来我就用了，我国内的搜狐的评论系统畅言，我真的像吐槽这个系统，首先这个系统，不能用邮箱注册，我是非常抗拒的，我认为一个网站不能用邮箱注册，那么这个网站就非常小众，就没有长远眼光，我从心里也是鄙视的，搜狐的畅言就是这样一个系统，后来我注册之后，又让我去备案，又让我填很多信息，这让我很不爽，我觉得有一种被骗的感觉，我甚至开始怀疑，是不是搜狐的畅言，把别的评论系统搞掉，比如让了多说系统关闭，让disqus系统被墙，和政府勾结起来，不是我心怀恶意，只是这样的事情，在中国发生了太多了</p>
-<p>后来我看到了莫烦python这个博主，用了一个韩国的评论系统，叫做来比力，折腾一番，改了jacman主题下的comment.ejs，最后搞定，这是comment.ejs</p>
-<pre><code class="javascript">
-&lt;!-- 来必力City版安装代码 --&gt;
-&lt;div id="lv-container" data-id="city" data-uid="你的appId"&gt;
-&lt;script type="text/javascript"&gt;
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-&lt;/script&gt;
-&lt;noscript&gt;为正常使用来必力评论功能请激活JavaScript&lt;/noscript&gt;
-&lt;/div&gt;
-&lt;!-- City版安装代码已完成 --&gt;
-</code></pre>
-<p>下午的时候，我把树莓派上的装上了挖矿系统，我喜欢能挖到币，哈哈</p>
-  
+		<h3 id="git-回滚操作"><a href="#git-回滚操作" class="headerlink" title="git 回滚操作"></a>git 回滚操作</h3><p>有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log</div></pre></td></tr></table></figure>
+<p>然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard   a0dd99<span class="built_in">cd</span>7a00ac95d3e0a54d4b0a1a51db41d498</div></pre></td></tr></table></figure>
+<p>这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="_">-f</span></div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/随笔/">随笔</a>
+  <a class="article-category-link" href="/categories/总结/">总结</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/加班/">加班</a>
+  <span></span> <a href="/tags/git/">git</a>
   </div>
 
 </div>
@@ -147,7 +127,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/05/11/忙活的一天/" data-title="忙活的一天 | Hexo" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/05/17/git-相关操作/" data-title="git 相关操作 | Hexo" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -160,19 +140,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/05/12/问题/" title="问题">
-  <strong>上一篇：</strong><br/>
-  <span>
-  问题</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/05/08/安装Supervisor/"  title="减肥">
+<a href="/2017/05/13/java程序员/"  title="java程序员">
  <strong>下一篇：</strong><br/> 
- <span>减肥
+ <span>java程序员
 </span>
 </a>
 </div>
@@ -203,7 +175,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#忙活的一天"><span class="toc-number">1.</span> <span class="toc-text">忙活的一天</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回滚操作"><span class="toc-number">1.</span> <span class="toc-text">git 回滚操作</span></a></li></ol>
  
   </div>
 

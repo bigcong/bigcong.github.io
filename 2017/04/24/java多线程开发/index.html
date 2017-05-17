@@ -4,26 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>java多线程开发 | Hexo</title>
+    <title>多线程 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="bigcong">
     
 
     
-    <meta name="description" content="引 多线程：指程序产生了不止一个线程 并发与并行  并发：多个CPU实例或者多台机器同时执行同一段逻辑代码 并行：通过cpu的调度算法，让用户看上去同时执行，实际上从cpu操作层面并不是真正的同时，并发场景往往有公用的资源，那么针对TPS或者QPS来反应这个系统的处理能力     线程安全：常常我们描绘一段代码，指在并发的情况下，该代码经过多线程的使用，线程的调度顺序不影响任何结果。这个时候我们指">
+    <meta name="description" content="多线程interrupted测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外） 留意i– 和System.out.println()的异常123456789101112131415161718192021222324	public class">
 <meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java多线程开发">
+<meta property="og:title" content="多线程">
 <meta property="og:url" content="http://yoursite.com/2017/04/24/java多线程开发/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="引 多线程：指程序产生了不止一个线程 并发与并行  并发：多个CPU实例或者多台机器同时执行同一段逻辑代码 并行：通过cpu的调度算法，让用户看上去同时执行，实际上从cpu操作层面并不是真正的同时，并发场景往往有公用的资源，那么针对TPS或者QPS来反应这个系统的处理能力     线程安全：常常我们描绘一段代码，指在并发的情况下，该代码经过多线程的使用，线程的调度顺序不影响任何结果。这个时候我们指">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1689841-383f7101e6588094.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&_=5479442">
-<meta property="og:updated_time" content="2017-05-11T12:18:22.000Z">
+<meta property="og:description" content="多线程interrupted测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外） 留意i– 和System.out.println()的异常123456789101112131415161718192021222324	public class">
+<meta property="og:updated_time" content="2017-05-17T13:12:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java多线程开发">
-<meta name="twitter:description" content="引 多线程：指程序产生了不止一个线程 并发与并行  并发：多个CPU实例或者多台机器同时执行同一段逻辑代码 并行：通过cpu的调度算法，让用户看上去同时执行，实际上从cpu操作层面并不是真正的同时，并发场景往往有公用的资源，那么针对TPS或者QPS来反应这个系统的处理能力     线程安全：常常我们描绘一段代码，指在并发的情况下，该代码经过多线程的使用，线程的调度顺序不影响任何结果。这个时候我们指">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1689841-383f7101e6588094.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&_=5479442">
+<meta name="twitter:title" content="多线程">
+<meta name="twitter:description" content="多线程interrupted测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外） 留意i– 和System.out.println()的异常123456789101112131415161718192021222324	public class">
 
     
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -82,7 +80,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/04/24/java多线程开发/" title="java多线程开发" itemprop="url">java多线程开发</a>
+      <a href="/2017/04/24/java多线程开发/" title="多线程" itemprop="url">多线程</a>
   </h1>
   <p class="article-author">By
        
@@ -98,85 +96,15 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引"><span class="toc-number">1.</span> <span class="toc-text">引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程状态"><span class="toc-number">2.</span> <span class="toc-text">线程状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#状态列表"><span class="toc-number">2.1.</span> <span class="toc-text">状态列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程的实现方法"><span class="toc-number">3.</span> <span class="toc-text">多线程的实现方法</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程"><span class="toc-number">1.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#interrupted"><span class="toc-number">1.1.</span> <span class="toc-text">interrupted</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#留意i–-和System-out-println-的异常"><span class="toc-number">2.</span> <span class="toc-text">留意i– 和System.out.println()的异常</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><ul>
-<li>多线程：指程序产生了不止一个线程</li>
-<li><p>并发与并行</p>
-<ul>
-<li>并发：多个CPU实例或者多台机器同时执行同一段逻辑代码</li>
-<li>并行：通过cpu的调度算法，让用户看上去同时执行，实际上从cpu操作层面并不是真正的同时，并发场景往往有公用的资源，那么针对TPS或者QPS来反应这个系统的处理能力</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>线程安全：常常我们描绘一段代码，指在并发的情况下，该代码经过多线程的使用，线程的调度顺序不影响任何结果。这个时候我们指关注系统的cpu，cpu是不是够用</li>
-<li>同步：java中的同步是指通过人为控制和调度，保持共享资源的多线程成为线程安全，来保证结果的正确性，synchronized关键字，在保持结果的同时，提高的性能</li>
-</ul>
-<h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><h3 id="状态列表"><a href="#状态列表" class="headerlink" title="状态列表"></a>状态列表</h3><ul>
-<li><ol>
-<li>NEW</li>
-</ol>
-</li>
-<li><ol>
-<li>RUNNABLE</li>
-</ol>
-</li>
-<li><ol>
-<li>BLOCKED</li>
-</ol>
-</li>
-<li><ol>
-<li>WAITING</li>
-</ol>
-</li>
-<li><ol>
-<li>TIMED_WATITING</li>
-</ol>
-</li>
-<li><ol>
-<li>TERMINATED</li>
-</ol>
-</li>
-</ul>
-<p>状态流转：<br><img src="http://upload-images.jianshu.io/upload_images/1689841-383f7101e6588094.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&amp;_=5479442" alt="状态流转" title="状态流转"></p>
-<ul>
-<li><p>在线程的Running 可能遇会遇到阻塞(Blocked)情况</p>
-<ul>
-<li><ol>
-<li>调用join()和sleep方法结束或者被打断，join中断，IO完成都会回到Runnable状态，等待JVM调用</li>
-</ol>
-</li>
-<li><ol>
-<li>调用wait（），该线程处在等待池（wait blocked pool）状态，直到notify／notifyall，线程被唤醒被锁定到池当中，释放同步锁使线程回到可运行状态</li>
-</ol>
-</li>
-<li><ol>
-<li>对于running状态的线程加同步锁，使其进入blocked，同步锁被释放进入可运用的状态</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="多线程的实现方法"><a href="#多线程的实现方法" class="headerlink" title="多线程的实现方法"></a>多线程的实现方法</h2><ul>
-<li>java的实现多线程的方法有两种，一种继承thread类，一种实现runnable接口，在开发实践当中，以实现runnable接口为主，因为实现runnable接口比继承thread类有如下优势：</li>
-</ul>
-<ol>
-<li><blockquote>
-<p>可以比较由于java的单继承而带来的局限性</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>增加程序的健壮性，代码能够被多个线程共享，代码和数据是独立的</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>适合多个相同的代码的线程区处理同一个资源的情况</p>
-</blockquote>
-</li>
-</ol>
+		<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h4 id="interrupted"><a href="#interrupted" class="headerlink" title="interrupted"></a>interrupted</h4><p>测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外）</p>
+<h3 id="留意i–-和System-out-println-的异常"><a href="#留意i–-和System-out-println-的异常" class="headerlink" title="留意i– 和System.out.println()的异常"></a>留意i– 和System.out.println()的异常</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">	public class MyThread extends Thread &#123;</div><div class="line">    private int i = 5;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;i=&quot; + i--);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line">        MyThread a = new MyThread();</div><div class="line">        Thread b1 = new Thread(a);</div><div class="line">        Thread b2 = new Thread(a);</div><div class="line">        Thread b3 = new Thread(a);</div><div class="line">        Thread b4 = new Thread(a);</div><div class="line">        Thread b5 = new Thread(a);</div><div class="line">        b5.start();</div><div class="line">        b2.start();</div><div class="line">        b4.start();</div><div class="line">        b3.start();</div><div class="line">        b1.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class MyThread extends Thread &#123;</div><div class="line">    private int i = 5;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        i--;</div><div class="line">        System.out.println(&quot;i=&quot; +i);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line">        MyThread a = new MyThread();</div><div class="line">        Thread b1 = new Thread(a);</div><div class="line">        Thread b2 = new Thread(a);</div><div class="line">        Thread b3 = new Thread(a);</div><div class="line">        Thread b4 = new Thread(a);</div><div class="line">        Thread b5 = new Thread(a);</div><div class="line">        b5.start();</div><div class="line">        b2.start();</div><div class="line">        b4.start();</div><div class="line">        b3.start();</div><div class="line">        b1.start();</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码执行的结果不一样的，是因为println方法，加了线程锁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public void println(String x) &#123;</div><div class="line">    synchronized (this) &#123;</div><div class="line">        print(x);</div><div class="line">        newLine();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -194,7 +122,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/04/24/java多线程开发/" data-title="java多线程开发 | Hexo" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/04/24/java多线程开发/" data-title="多线程 | Hexo" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -250,7 +178,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引"><span class="toc-number">1.</span> <span class="toc-text">引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程状态"><span class="toc-number">2.</span> <span class="toc-text">线程状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#状态列表"><span class="toc-number">2.1.</span> <span class="toc-text">状态列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程的实现方法"><span class="toc-number">3.</span> <span class="toc-text">多线程的实现方法</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程"><span class="toc-number">1.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#interrupted"><span class="toc-number">1.1.</span> <span class="toc-text">interrupted</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#留意i–-和System-out-println-的异常"><span class="toc-number">2.</span> <span class="toc-text">留意i– 和System.out.println()的异常</span></a></li></ol>
  
   </div>
 
@@ -274,7 +202,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/总结/" title="总结">总结<sup>3</sup></a></li>
+			<li><a href="/categories/总结/" title="总结">总结<sup>4</sup></a></li>
 		  
 		
 		  
@@ -324,6 +252,10 @@
 		
 			
 				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
 			
 		
 		</ul>
