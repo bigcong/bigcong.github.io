@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>git 相关操作 | Hexo</title>
+    <title>常用的命令 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="bigcong">
     
 
     
-    <meta name="description" content="git 回滚操作有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push -f">
-<meta name="keywords" content="git">
+    <meta name="description" content="git 命令git 回退某个版本有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push">
+<meta name="keywords" content="命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git 相关操作">
+<meta property="og:title" content="常用的命令">
 <meta property="og:url" content="http://yoursite.com/2017/05/17/git-相关操作/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="git 回滚操作有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push -f">
-<meta property="og:updated_time" content="2017-05-17T08:47:23.000Z">
+<meta property="og:description" content="git 命令git 回退某个版本有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push">
+<meta property="og:updated_time" content="2017-05-19T08:31:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git 相关操作">
-<meta name="twitter:description" content="git 回滚操作有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push -f">
+<meta name="twitter:title" content="常用的命令">
+<meta name="twitter:description" content="git 命令git 回退某个版本有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push">
 
     
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -80,7 +80,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/05/17/git-相关操作/" title="git 相关操作" itemprop="url">git 相关操作</a>
+      <a href="/2017/05/17/git-相关操作/" title="常用的命令" itemprop="url">常用的命令</a>
   </h1>
   <p class="article-author">By
        
@@ -96,29 +96,32 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回滚操作"><span class="toc-number">1.</span> <span class="toc-text">git 回滚操作</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-命令"><span class="toc-number">1.</span> <span class="toc-text">git 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回退某个版本"><span class="toc-number">1.1.</span> <span class="toc-text">git 回退某个版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-查看远程分支"><span class="toc-number">1.2.</span> <span class="toc-text">git 查看远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-拉取远程分支并创建本地分支"><span class="toc-number">1.3.</span> <span class="toc-text">git 拉取远程分支并创建本地分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac-系统命令"><span class="toc-number">2.</span> <span class="toc-text">Mac 系统命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac-查看端口占用"><span class="toc-number">2.1.</span> <span class="toc-text">Mac 查看端口占用</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h3 id="git-回滚操作"><a href="#git-回滚操作" class="headerlink" title="git 回滚操作"></a>git 回滚操作</h3><p>有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号</p>
+		<h2 id="git-命令"><a href="#git-命令" class="headerlink" title="git 命令"></a>git 命令</h2><h3 id="git-回退某个版本"><a href="#git-回退某个版本" class="headerlink" title="git 回退某个版本"></a>git 回退某个版本</h3><p>有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log</div></pre></td></tr></table></figure>
 <p>然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard   a0dd99<span class="built_in">cd</span>7a00ac95d3e0a54d4b0a1a51db41d498</div></pre></td></tr></table></figure>
 <p>这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="_">-f</span></div></pre></td></tr></table></figure>  
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="_">-f</span></div></pre></td></tr></table></figure>
+<h3 id="git-查看远程分支"><a href="#git-查看远程分支" class="headerlink" title="git 查看远程分支"></a>git 查看远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
+<h3 id="git-拉取远程分支并创建本地分支"><a href="#git-拉取远程分支并创建本地分支" class="headerlink" title="git 拉取远程分支并创建本地分支"></a>git 拉取远程分支并创建本地分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b develop  remotes/origin/develop</div></pre></td></tr></table></figure>
+<h2 id="Mac-系统命令"><a href="#Mac-系统命令" class="headerlink" title="Mac 系统命令"></a>Mac 系统命令</h2><h3 id="Mac-查看端口占用"><a href="#Mac-查看端口占用" class="headerlink" title="Mac 查看端口占用"></a>Mac 查看端口占用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsof -i tcp:8080</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/总结/">总结</a>
+  <a class="article-category-link" href="/categories/命令/">命令</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/git/">git</a>
+  <span></span> <a href="/tags/命令/">命令</a>
   </div>
 
 </div>
@@ -127,7 +130,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/05/17/git-相关操作/" data-title="git 相关操作 | Hexo" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/05/17/git-相关操作/" data-title="常用的命令 | Hexo" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -175,7 +178,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回滚操作"><span class="toc-number">1.</span> <span class="toc-text">git 回滚操作</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-命令"><span class="toc-number">1.</span> <span class="toc-text">git 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回退某个版本"><span class="toc-number">1.1.</span> <span class="toc-text">git 回退某个版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-查看远程分支"><span class="toc-number">1.2.</span> <span class="toc-text">git 查看远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-拉取远程分支并创建本地分支"><span class="toc-number">1.3.</span> <span class="toc-text">git 拉取远程分支并创建本地分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac-系统命令"><span class="toc-number">2.</span> <span class="toc-text">Mac 系统命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac-查看端口占用"><span class="toc-number">2.1.</span> <span class="toc-text">Mac 查看端口占用</span></a></li></ol></li></ol>
  
   </div>
 
@@ -199,7 +202,11 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/总结/" title="总结">总结<sup>4</sup></a></li>
+			<li><a href="/categories/命令/" title="命令">命令<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/总结/" title="总结">总结<sup>3</sup></a></li>
 		  
 		
 		  
@@ -252,7 +259,9 @@
 			
 		
 			
-				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+			
+		
 			
 		
 		</ul>
