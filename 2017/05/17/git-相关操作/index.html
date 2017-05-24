@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/17/git-相关操作/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="git 命令git 回退某个版本有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push">
-<meta property="og:updated_time" content="2017-05-19T08:31:39.000Z">
+<meta property="og:updated_time" content="2017-05-24T07:48:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用的命令">
 <meta name="twitter:description" content="git 命令git 回退某个版本有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号 1git log 然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本 1git reset --hard   a0dd99cd7a00ac95d3e0a54d4b0a1a51db41d498 这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f 1git push">
@@ -96,7 +96,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-命令"><span class="toc-number">1.</span> <span class="toc-text">git 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回退某个版本"><span class="toc-number">1.1.</span> <span class="toc-text">git 回退某个版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-查看远程分支"><span class="toc-number">1.2.</span> <span class="toc-text">git 查看远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-拉取远程分支并创建本地分支"><span class="toc-number">1.3.</span> <span class="toc-text">git 拉取远程分支并创建本地分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac-系统命令"><span class="toc-number">2.</span> <span class="toc-text">Mac 系统命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac-查看端口占用"><span class="toc-number">2.1.</span> <span class="toc-text">Mac 查看端口占用</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-命令"><span class="toc-number">1.</span> <span class="toc-text">git 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回退某个版本"><span class="toc-number">1.1.</span> <span class="toc-text">git 回退某个版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-查看远程分支"><span class="toc-number">1.2.</span> <span class="toc-text">git 查看远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-拉取远程分支并创建本地分支"><span class="toc-number">1.3.</span> <span class="toc-text">git 拉取远程分支并创建本地分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统命令"><span class="toc-number">2.</span> <span class="toc-text">系统命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac查看端口占用"><span class="toc-number">2.1.</span> <span class="toc-text">Mac查看端口占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给予某个用户权限某个用户权限"><span class="toc-number">2.2.</span> <span class="toc-text">给予某个用户权限某个用户权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql命令"><span class="toc-number">3.</span> <span class="toc-text">mysql命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql将结果导出文件"><span class="toc-number">3.1.</span> <span class="toc-text">mysql将结果导出文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-关联表一起更新"><span class="toc-number">3.2.</span> <span class="toc-text">mysql 关联表一起更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备份数据库脚本"><span class="toc-number">3.3.</span> <span class="toc-text">备份数据库脚本</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -108,7 +108,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="_">-f</span></div></pre></td></tr></table></figure>
 <h3 id="git-查看远程分支"><a href="#git-查看远程分支" class="headerlink" title="git 查看远程分支"></a>git 查看远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
 <h3 id="git-拉取远程分支并创建本地分支"><a href="#git-拉取远程分支并创建本地分支" class="headerlink" title="git 拉取远程分支并创建本地分支"></a>git 拉取远程分支并创建本地分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b develop  remotes/origin/develop</div></pre></td></tr></table></figure>
-<h2 id="Mac-系统命令"><a href="#Mac-系统命令" class="headerlink" title="Mac 系统命令"></a>Mac 系统命令</h2><h3 id="Mac-查看端口占用"><a href="#Mac-查看端口占用" class="headerlink" title="Mac 查看端口占用"></a>Mac 查看端口占用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsof -i tcp:8080</div></pre></td></tr></table></figure>  
+<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><h3 id="Mac查看端口占用"><a href="#Mac查看端口占用" class="headerlink" title="Mac查看端口占用"></a>Mac查看端口占用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsof -i tcp:8080</div></pre></td></tr></table></figure>
+<h3 id="给予某个用户权限某个用户权限"><a href="#给予某个用户权限某个用户权限" class="headerlink" title="给予某个用户权限某个用户权限"></a>给予某个用户权限某个用户权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown -R jenkins:jenkins /data/app/jar/</div></pre></td></tr></table></figure>
+<h2 id="mysql命令"><a href="#mysql命令" class="headerlink" title="mysql命令"></a>mysql命令</h2><h3 id="mysql将结果导出文件"><a href="#mysql将结果导出文件" class="headerlink" title="mysql将结果导出文件"></a>mysql将结果导出文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -h 172.1.0.1  -uroot -pcc  --default-character-set=utf8 jeeplus_schema -e &quot;select count(*),uname,phone from user group by uname  having count(*)&gt;1;&quot;  -- default-ch&gt; /tmp/repeat.txt</div></pre></td></tr></table></figure>
+<h3 id="mysql-关联表一起更新"><a href="#mysql-关联表一起更新" class="headerlink" title="mysql 关联表一起更新"></a>mysql 关联表一起更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">UPDATE user_points p,</div><div class="line"> (</div><div class="line">	SELECT</div><div class="line">		uuid,</div><div class="line">		sum(number) outnumber</div><div class="line">	FROM</div><div class="line">		user_itl_consume</div><div class="line">	GROUP BY</div><div class="line">		uuid</div><div class="line">) outcome,</div><div class="line"> (</div><div class="line">	SELECT</div><div class="line">		uuid,</div><div class="line">		sum(number) innumber</div><div class="line">	FROM</div><div class="line">		user_itl_income</div><div class="line">	GROUP BY</div><div class="line">		uuid</div><div class="line">) income</div><div class="line">SET p.point = (</div><div class="line">	income.innumber - outcome.outnumber</div><div class="line">)</div><div class="line">WHERE</div><div class="line">	p.uuid = income.uuid</div><div class="line">AND p.uuid = outcome.uuid</div><div class="line">AND income.innumber - outcome.outnumber != p.point;</div></pre></td></tr></table></figure>
+<h3 id="备份数据库脚本"><a href="#备份数据库脚本" class="headerlink" title="备份数据库脚本"></a>备份数据库脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh </div><div class="line">date=` date +%F`</div><div class="line">echo $date</div><div class="line"> mysqldump -h 172.0.0.1  -uroot -pcc cc  &gt; /data/app/sql/cc-$date.sql</div></pre></td></tr></table></figure>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -178,7 +183,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-命令"><span class="toc-number">1.</span> <span class="toc-text">git 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回退某个版本"><span class="toc-number">1.1.</span> <span class="toc-text">git 回退某个版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-查看远程分支"><span class="toc-number">1.2.</span> <span class="toc-text">git 查看远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-拉取远程分支并创建本地分支"><span class="toc-number">1.3.</span> <span class="toc-text">git 拉取远程分支并创建本地分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac-系统命令"><span class="toc-number">2.</span> <span class="toc-text">Mac 系统命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac-查看端口占用"><span class="toc-number">2.1.</span> <span class="toc-text">Mac 查看端口占用</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-命令"><span class="toc-number">1.</span> <span class="toc-text">git 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回退某个版本"><span class="toc-number">1.1.</span> <span class="toc-text">git 回退某个版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-查看远程分支"><span class="toc-number">1.2.</span> <span class="toc-text">git 查看远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-拉取远程分支并创建本地分支"><span class="toc-number">1.3.</span> <span class="toc-text">git 拉取远程分支并创建本地分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统命令"><span class="toc-number">2.</span> <span class="toc-text">系统命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac查看端口占用"><span class="toc-number">2.1.</span> <span class="toc-text">Mac查看端口占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给予某个用户权限某个用户权限"><span class="toc-number">2.2.</span> <span class="toc-text">给予某个用户权限某个用户权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql命令"><span class="toc-number">3.</span> <span class="toc-text">mysql命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql将结果导出文件"><span class="toc-number">3.1.</span> <span class="toc-text">mysql将结果导出文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-关联表一起更新"><span class="toc-number">3.2.</span> <span class="toc-text">mysql 关联表一起更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备份数据库脚本"><span class="toc-number">3.3.</span> <span class="toc-text">备份数据库脚本</span></a></li></ol></li></ol>
  
   </div>
 
@@ -235,6 +240,10 @@
 			
 		
 			
+				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/多线程/" title="多线程">多线程<sup>1</sup></a></li>
 			
 		
@@ -256,12 +265,6 @@
 		
 			
 				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
-			
-		
 			
 		
 		</ul>
