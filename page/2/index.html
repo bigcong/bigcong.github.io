@@ -77,6 +77,59 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/05/08/安装Supervisor/" title="减肥" itemprop="url">减肥</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-08T07:31:33.000Z" itemprop="datePublished"> 发表于 2017-05-08</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="减肥"><a href="#减肥" class="headerlink" title="减肥"></a>减肥</h2><p>减肥这件事，真是一件大事，自从来了12lian这个公司之后，我涨了4斤，听起来真是有点汗颜，我之前跑的步，我面试的时候，瘦下来的，全反弹回来了，总之，这样的事情，让我非常忧虑。</p>
+<p>买了机票之后，携程也一直没有出票，之前我还去携程面试，app的界面也没有阿里的飞猪好。去广州的话，我还是有点期待的，因为今年我不是一个人，我之前的做了很多事情，没有结果，然后忽然世界对我有爱了，并没有抛弃我，我找到了我的生活的目标，我活下去的方向，好像这个世界上对我的无端的指责，戛然而止，我也突然有点不适应的</p>
+<p>早饭有人给你做，晚上回去还有人给你开着灯，这也是我以前，一个人独居的幻想，我有时候还以为这是一个梦，但是这却真真切切发生了。</p>
+<p>其实加班的时候，我大部分没有事情，因为我很多时间，在没有加班之前，都已经把活儿干完了，所以现在我有大把的时间来写这本随笔罢了，上周和老婆一起看的，银河护卫队，我现在还印象深刻，然后这时候，我突然发现了自己毛病，我所有的时间，都是半途而废，没有深入的了解，导致我对所有的东西，都能说上两句，却不能深入的说上原理，也导致了，我来到一个一家卖比特币的创业公司，这是也我为什么加班，为什么有时间，在这个时间段，写下这篇随笔</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/05/06/星期六/" title="星期六" itemprop="url">星期六</a>
   </h1>
   <p class="article-author">By
@@ -320,65 +373,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/24/java多线程开发/" title="多线程" itemprop="url">多线程</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-23T22:16:00.000Z" itemprop="datePublished"> 发表于 2017-04-24</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h4 id="interrupted"><a href="#interrupted" class="headerlink" title="interrupted"></a>interrupted</h4><p>测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外）</p>
-<h3 id="留意i–-和System-out-println-的异常"><a href="#留意i–-和System-out-println-的异常" class="headerlink" title="留意i– 和System.out.println()的异常"></a>留意i– 和System.out.println()的异常</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">	public class MyThread extends Thread &#123;</div><div class="line">    private int i = 5;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;i=&quot; + i--);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line">        MyThread a = new MyThread();</div><div class="line">        Thread b1 = new Thread(a);</div><div class="line">        Thread b2 = new Thread(a);</div><div class="line">        Thread b3 = new Thread(a);</div><div class="line">        Thread b4 = new Thread(a);</div><div class="line">        Thread b5 = new Thread(a);</div><div class="line">        b5.start();</div><div class="line">        b2.start();</div><div class="line">        b4.start();</div><div class="line">        b3.start();</div><div class="line">        b1.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class MyThread extends Thread &#123;</div><div class="line">    private int i = 5;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        i--;</div><div class="line">        System.out.println(&quot;i=&quot; +i);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line">        MyThread a = new MyThread();</div><div class="line">        Thread b1 = new Thread(a);</div><div class="line">        Thread b2 = new Thread(a);</div><div class="line">        Thread b3 = new Thread(a);</div><div class="line">        Thread b4 = new Thread(a);</div><div class="line">        Thread b5 = new Thread(a);</div><div class="line">        b5.start();</div><div class="line">        b2.start();</div><div class="line">        b4.start();</div><div class="line">        b3.start();</div><div class="line">        b1.start();</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以上代码执行的结果不一样的，是因为println方法，加了线程锁</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public void println(String x) &#123;</div><div class="line">    synchronized (this) &#123;</div><div class="line">        print(x);</div><div class="line">        newLine();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/多线程/">多线程</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
@@ -407,7 +401,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/命令/" title="命令">命令<sup>1</sup></a></li>
+			<li><a href="/categories/命令/" title="命令">命令<sup>2</sup></a></li>
 		  
 		
 		  
@@ -440,11 +434,7 @@
 			
 		
 			
-				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/多线程/" title="多线程">多线程<sup>1</sup></a></li>
+				<li><a href="/tags/加班/" title="加班">加班<sup>1</sup></a></li>
 			
 		
 			
@@ -452,7 +442,11 @@
 			
 		
 			
-				<li><a href="/tags/加班/" title="加班">加班<sup>1</sup></a></li>
+				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程/" title="多线程">多线程<sup>1</sup></a></li>
 			
 		
 			
@@ -465,6 +459,14 @@
 		
 			
 				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/redis/" title="redis">redis<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/运维/" title="运维">运维<sup>1</sup></a></li>
 			
 		
 		</ul>
