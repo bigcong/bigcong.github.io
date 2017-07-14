@@ -4,24 +4,19 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>面试1 | Hexo</title>
+    <title>Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="bigcong">
     
 
     
-    <meta name="description" content="java的内存分配策略 程序运行当中，内存分为三种策略，分别是栈式，堆式，静态的， 静态分配是指在编译的时候每个数据目标在运行时刻所需要的存储空间，因此在编译的时候就可以给他们分配的固定的内存空间，这种分配策略要求程序代码当中不能有可变的数据结构（比如可变的数组结构），不允许有嵌套和递归结构出现，因为他们编译的时候无法准确计算出所需的存储空间 栈式存储分配也可以称为动态分配，和静态存储分配相反，栈">
-<meta name="keywords" content="总结">
-<meta property="og:type" content="article">
-<meta property="og:title" content="面试1">
-<meta property="og:url" content="http://yoursite.com/2017/04/15/面试总结/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="java的内存分配策略 程序运行当中，内存分为三种策略，分别是栈式，堆式，静态的， 静态分配是指在编译的时候每个数据目标在运行时刻所需要的存储空间，因此在编译的时候就可以给他们分配的固定的内存空间，这种分配策略要求程序代码当中不能有可变的数据结构（比如可变的数组结构），不允许有嵌套和递归结构出现，因为他们编译的时候无法准确计算出所需的存储空间 栈式存储分配也可以称为动态分配，和静态存储分配相反，栈">
-<meta property="og:updated_time" content="2017-05-11T12:18:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试1">
-<meta name="twitter:description" content="java的内存分配策略 程序运行当中，内存分为三种策略，分别是栈式，堆式，静态的， 静态分配是指在编译的时候每个数据目标在运行时刻所需要的存储空间，因此在编译的时候就可以给他们分配的固定的内存空间，这种分配策略要求程序代码当中不能有可变的数据结构（比如可变的数组结构），不允许有嵌套和递归结构出现，因为他们编译的时候无法准确计算出所需的存储空间 栈式存储分配也可以称为动态分配，和静态存储分配相反，栈">
+<meta name="twitter:title" content="Hexo">
 
     
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -74,10 +69,12 @@
 </div>
     </header>
     <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-  
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2017/04/15/面试总结/" title="面试1" itemprop="url">面试1</a>
@@ -91,16 +88,9 @@
     
   </p>
 </header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#java的内存分配策略"><span class="toc-number">1.</span> <span class="toc-text">java的内存分配策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jvm的堆和栈"><span class="toc-number">2.</span> <span class="toc-text">jvm的堆和栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java的equals和hashcode"><span class="toc-number">3.</span> <span class="toc-text">java的equals和hashcode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-索引原理"><span class="toc-number">4.</span> <span class="toc-text">mysql 索引原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-引擎"><span class="toc-number">5.</span> <span class="toc-text">mysql 引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-aop-原理"><span class="toc-number">6.</span> <span class="toc-text">spring aop 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka如何避免丢消息"><span class="toc-number">7.</span> <span class="toc-text">kafka如何避免丢消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步异步和阻塞和非阻塞"><span class="toc-number">8.</span> <span class="toc-text">同步异步和阻塞和非阻塞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList和linkedList的区别"><span class="toc-number">9.</span> <span class="toc-text">ArrayList和linkedList的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string-StringBuilder-StringBuffer"><span class="toc-number">10.</span> <span class="toc-text">string ,StringBuilder,StringBuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM内存管理"><span class="toc-number">11.</span> <span class="toc-text">JVM内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#堆"><span class="toc-number">11.1.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#新生代"><span class="toc-number">11.1.1.</span> <span class="toc-text">新生代</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#旧生代"><span class="toc-number">11.1.2.</span> <span class="toc-text">旧生代</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#栈"><span class="toc-number">11.2.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地方法栈"><span class="toc-number">11.3.</span> <span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法区"><span class="toc-number">11.4.</span> <span class="toc-text">方法区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收机制"><span class="toc-number">12.</span> <span class="toc-text">垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新生代GC"><span class="toc-number">12.1.</span> <span class="toc-text">新生代GC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#旧生代GC"><span class="toc-number">12.2.</span> <span class="toc-text">旧生代GC</span></a></li></ol></li></ol>
-		
-		</div>
-		
-		<h3 id="java的内存分配策略"><a href="#java的内存分配策略" class="headerlink" title="java的内存分配策略"></a>java的内存分配策略</h3><ul>
+    <div class="article-content">
+        
+        <h3 id="java的内存分配策略"><a href="#java的内存分配策略" class="headerlink" title="java的内存分配策略"></a>java的内存分配策略</h3><ul>
 <li>程序运行当中，内存分为三种策略，分别是栈式，堆式，静态的，</li>
 <li>静态分配是指在编译的时候每个数据目标在运行时刻所需要的存储空间，因此在编译的时候就可以给他们分配的固定的内存空间，这种分配策略要求程序代码当中不能有可变的数据结构（比如可变的数组结构），不允许有嵌套和递归结构出现，因为他们编译的时候无法准确计算出所需的存储空间</li>
 <li>栈式存储分配也可以称为动态分配，和静态存储分配相反，栈式分配的时候，程序对数区的分配是完全未知的，只有运行的时候才知道，但是规定在运行中进入一个程序模块时，必须知道该程序模块的所需的数据区的大小才能为其分配内存，栈式存储分配按照先进后出的原则进行分配的</li>
@@ -199,9 +189,14 @@
 <h4 id="旧生代GC"><a href="#旧生代GC" class="headerlink" title="旧生代GC"></a>旧生代GC</h4><ul>
 <li>旧生代GC，对象存放时间长，比较稳定，采用mark标记算法来回收，所谓的标记就是扫描出存活的对象，然后再回收未被标记的对象，回收之后的空间进行合并，那么标记出来便于下次进行分配，总之减少内存随便带来的效率损耗</li>
 </ul>
-  
-	</div>
-		<footer class="article-footer clearfix">
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
 <div class="article-catetags">
 
 
@@ -214,67 +209,159 @@
 
 
 
-	<div class="article-share" id="share">
-	
-	  <div data-url="http://yoursite.com/2017/04/15/面试总结/" data-title="面试1 | Hexo" data-tsina="null" class="share clearfix">
-	  </div>
-	
-	</div>
 
+<div class="comments-count">
+	
+</div>
 
 </footer>
 
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2017/04/20/面试2/" title="kafka">
-  <strong>上一篇：</strong><br/>
-  <span>
-  kafka</span>
-</a>
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/04/14/hello-world/" title=" 树莓派一些总结" itemprop="url"> 树莓派一些总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-14T09:13:00.000Z" itemprop="datePublished"> 发表于 2017-04-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="Mac-下将img-烧录到-内存卡中"><a href="#Mac-下将img-烧录到-内存卡中" class="headerlink" title="Mac 下将img 烧录到 内存卡中"></a>Mac 下将img 烧录到 内存卡中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dd <span class="keyword">if</span>=2016-03-18-raspbian-jessie-lite.img of=/dev/rdisk2 bs=32m</div></pre></td></tr></table></figure>
+<h3 id="更换树莓派源"><a href="#更换树莓派源" class="headerlink" title="更换树莓派源"></a>更换树莓派源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vim /etc/apt/sources.list</div><div class="line">注释官方源之后，加入下面这些</div><div class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ wheezy main contrib non-free rpi </div><div class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ wheezy main contrib non-free rpi </div><div class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib</div><div class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib</div></pre></td></tr></table></figure>
+<h3 id="安装ZSH"><a href="#安装ZSH" class="headerlink" title="安装ZSH"></a>安装ZSH</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install zsh</div><div class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></div></pre></td></tr></table></figure>
+<h3 id="启用root"><a href="#启用root" class="headerlink" title="启用root"></a>启用root</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo passwd root</div><div class="line">vim /etc/ssh/sshd_config</div><div class="line">把这行修改为“PermitRootLogin yes</div></pre></td></tr></table></figure>
+<h3 id="ssh-无密码登录"><a href="#ssh-无密码登录" class="headerlink" title="ssh 无密码登录"></a>ssh 无密码登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa </div><div class="line">vim .ssh/authorized_keys</div><div class="line">chmod 600 .ssh/authorized_keys</div><div class="line">chmod 700 -R .ssh</div></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/总结/">总结</a>
 </div>
 
 
-<div class="next">
-<a href="/2017/04/14/hello-world/"  title=" 树莓派一些总结">
- <strong>下一篇：</strong><br/> 
- <span> 树莓派一些总结
-</span>
-</a>
-</div>
-
-</nav>
-
-	<!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8yODYxOC81MTg5">
-<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-</script>
-<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#java的内存分配策略"><span class="toc-number">1.</span> <span class="toc-text">java的内存分配策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jvm的堆和栈"><span class="toc-number">2.</span> <span class="toc-text">jvm的堆和栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java的equals和hashcode"><span class="toc-number">3.</span> <span class="toc-text">java的equals和hashcode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-索引原理"><span class="toc-number">4.</span> <span class="toc-text">mysql 索引原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-引擎"><span class="toc-number">5.</span> <span class="toc-text">mysql 引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-aop-原理"><span class="toc-number">6.</span> <span class="toc-text">spring aop 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka如何避免丢消息"><span class="toc-number">7.</span> <span class="toc-text">kafka如何避免丢消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步异步和阻塞和非阻塞"><span class="toc-number">8.</span> <span class="toc-text">同步异步和阻塞和非阻塞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList和linkedList的区别"><span class="toc-number">9.</span> <span class="toc-text">ArrayList和linkedList的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string-StringBuilder-StringBuffer"><span class="toc-number">10.</span> <span class="toc-text">string ,StringBuilder,StringBuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM内存管理"><span class="toc-number">11.</span> <span class="toc-text">JVM内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#堆"><span class="toc-number">11.1.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#新生代"><span class="toc-number">11.1.1.</span> <span class="toc-text">新生代</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#旧生代"><span class="toc-number">11.1.2.</span> <span class="toc-text">旧生代</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#栈"><span class="toc-number">11.2.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地方法栈"><span class="toc-number">11.3.</span> <span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法区"><span class="toc-number">11.4.</span> <span class="toc-text">方法区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收机制"><span class="toc-number">12.</span> <span class="toc-text">垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新生代GC"><span class="toc-number">12.1.</span> <span class="toc-text">新生代GC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#旧生代GC"><span class="toc-number">12.2.</span> <span class="toc-text">旧生代GC</span></a></li></ol></li></ol>
- 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/教程/">教程</a>
   </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/01/14/无题/" title="无题" itemprop="url">无题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-01-14T04:01:00.000Z" itemprop="datePublished"> 发表于 2017-01-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="无题"><a href="#无题" class="headerlink" title="无题"></a>无题</h2><ul>
+<li>很多时候，如果被一件事情伤害了，在以后的日子，心里有阴影了，所以就有了很多古话，什么初生牛犊不怕虎，不知者无畏，人类将一些他生活</li>
+<li>当中，一些事情总结成经验，然后代代相传，就会有选择，就会有进化，使得你越来越适应这个环境，然后有一天，有个人发生变异了，改变他们</li>
+<li>所认知的世界，与他们所认知的世界相悖，为世事所不认可，那么这个人下场就会很惨，姑且下场这个词语吧，因为这些人们对这个相悖者，当时</li>
+<li>就是这样描述的。对于这个相悖者，这个人就是异类，就是变异，因为他不知道这个相悖者，最终会发展成什么样子，会不会毁灭他们一手搭建的</li>
+<li>世界，会不会将这个世界主导者发生改变，于是不断的打压，不对的迫害，你就是变异者，你就是反动者，你就是毁灭者，我们要打到他，我们</li>
+<li>要和平，我们要胜利，万岁，万岁，万岁</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/随笔/">随笔</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/日记/">日记</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -486,11 +573,6 @@ $(document).ready(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
   
-        getSize();
-        if (myWidth >= 1024) {
-          c.click();
-        }
-  
   $(window).resize(function(){
     getSize(); 
     if (myWidth >= 1024) {
@@ -499,89 +581,12 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-
-  $('.hoverqrcode').hide();
-
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
 
 
 
@@ -681,4 +686,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
-</html>
+ </html>

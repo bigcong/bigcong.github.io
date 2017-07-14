@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/04/zongjie/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="总结tensorflow的基本类型123Variable  计算图谱中的变量Constant  常量Placeholder  预先的变量，类似于占位符，暂时变量？ 常用命令 1hexo d -g     hexo 编译发布 gradle 仓库加速  1maven&amp;#123;url&amp;apos;http://maven.aliyun.com/nexus/content/groups/public&amp;ap">
-<meta property="og:updated_time" content="2017-05-11T12:18:22.000Z">
+<meta property="og:updated_time" content="2017-06-15T02:01:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" 总结">
 <meta name="twitter:description" content="总结tensorflow的基本类型123Variable  计算图谱中的变量Constant  常量Placeholder  预先的变量，类似于占位符，暂时变量？ 常用命令 1hexo d -g     hexo 编译发布 gradle 仓库加速  1maven&amp;#123;url&amp;apos;http://maven.aliyun.com/nexus/content/groups/public&amp;ap">
@@ -96,7 +96,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tensorflow的基本类型"><span class="toc-number">1.1.</span> <span class="toc-text">tensorflow的基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-number">1.2.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gradle-仓库加速"><span class="toc-number">1.3.</span> <span class="toc-text">gradle 仓库加速</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接redis远程服务器"><span class="toc-number">1.4.</span> <span class="toc-text">连接redis远程服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pptp-VPN-创建连接"><span class="toc-number">1.5.</span> <span class="toc-text">pptp VPN 创建连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保留两位小数四舍五入"><span class="toc-number">1.6.</span> <span class="toc-text">保留两位小数四舍五入</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tensorflow的基本类型"><span class="toc-number">1.1.</span> <span class="toc-text">tensorflow的基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-number">1.2.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gradle-仓库加速"><span class="toc-number">1.3.</span> <span class="toc-text">gradle 仓库加速</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接redis远程服务器"><span class="toc-number">1.4.</span> <span class="toc-text">连接redis远程服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pptp-VPN-创建连接"><span class="toc-number">1.5.</span> <span class="toc-text">pptp VPN 创建连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保留两位小数四舍五入"><span class="toc-number">1.6.</span> <span class="toc-text">保留两位小数四舍五入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java-8-分区"><span class="toc-number">1.7.</span> <span class="toc-text">java 8 分区</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -106,6 +106,7 @@
 <h3 id="连接redis远程服务器"><a href="#连接redis远程服务器" class="headerlink" title="连接redis远程服务器"></a>连接redis远程服务器</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis-cli -h 123.57.220.83 -p 6379 auth iGn7mIJZYW2rdzJqT</div></pre></td></tr></table></figure>
 <h3 id="pptp-VPN-创建连接"><a href="#pptp-VPN-创建连接" class="headerlink" title="pptp VPN 创建连接"></a>pptp VPN 创建连接</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pptpsetup --create pptpd  --server x.x.x.x  --username 11111  --password  00000  --encrypt --start</div></pre></td></tr></table></figure>
 <h3 id="保留两位小数四舍五入"><a href="#保留两位小数四舍五入" class="headerlink" title="保留两位小数四舍五入"></a>保留两位小数四舍五入</h3><p>　  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">double   f   =   111231.5585;  </div><div class="line">BigDecimal   b   =   new   BigDecimal(f);  </div><div class="line">double   f1   =   b.setScale(2,   BigDecimal.ROUND_HALF_UP).doubleValue();</div></pre></td></tr></table></figure></p>
+<h3 id="java-8-分区"><a href="#java-8-分区" class="headerlink" title="java 8 分区"></a>java 8 分区</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Map&lt;Boolean, List&lt;CaCustomerCard&gt;&gt; collect = caCustomerCards.stream().collect(Collectors.partitioningBy(t -&gt; t.getId() == cardId));</div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -184,7 +185,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tensorflow的基本类型"><span class="toc-number">1.1.</span> <span class="toc-text">tensorflow的基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-number">1.2.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gradle-仓库加速"><span class="toc-number">1.3.</span> <span class="toc-text">gradle 仓库加速</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接redis远程服务器"><span class="toc-number">1.4.</span> <span class="toc-text">连接redis远程服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pptp-VPN-创建连接"><span class="toc-number">1.5.</span> <span class="toc-text">pptp VPN 创建连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保留两位小数四舍五入"><span class="toc-number">1.6.</span> <span class="toc-text">保留两位小数四舍五入</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tensorflow的基本类型"><span class="toc-number">1.1.</span> <span class="toc-text">tensorflow的基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-number">1.2.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gradle-仓库加速"><span class="toc-number">1.3.</span> <span class="toc-text">gradle 仓库加速</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接redis远程服务器"><span class="toc-number">1.4.</span> <span class="toc-text">连接redis远程服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pptp-VPN-创建连接"><span class="toc-number">1.5.</span> <span class="toc-text">pptp VPN 创建连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保留两位小数四舍五入"><span class="toc-number">1.6.</span> <span class="toc-text">保留两位小数四舍五入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java-8-分区"><span class="toc-number">1.7.</span> <span class="toc-text">java 8 分区</span></a></li></ol></li></ol>
  
   </div>
 
@@ -241,15 +242,7 @@
 			
 		
 			
-				<li><a href="/tags/加班/" title="加班">加班<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/程序分级/" title="程序分级">程序分级<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
 			
 		
 			
@@ -257,7 +250,19 @@
 			
 		
 			
-				<li><a href="/tags/加班夜/" title="加班夜">加班夜<sup>1</sup></a></li>
+				<li><a href="/tags/redis/" title="redis">redis<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/运维/" title="运维">运维<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/加班/" title="加班">加班<sup>1</sup></a></li>
 			
 		
 			
@@ -269,11 +274,11 @@
 			
 		
 			
-				<li><a href="/tags/redis/" title="redis">redis<sup>1</sup></a></li>
+				<li><a href="/tags/加班夜/" title="加班夜">加班夜<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/运维/" title="运维">运维<sup>1</sup></a></li>
+				<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
 			
 		
 		</ul>

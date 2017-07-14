@@ -4,24 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>多线程 | Hexo</title>
+    <title>数学问题 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="bigcong">
     
 
     
-    <meta name="description" content="多线程interrupted测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外） 留意i– 和System.out.println()的异常123456789101112131415161718192021222324	public class">
-<meta name="keywords" content="多线程">
+    <meta name="description" content="∑的用法其中i表示下界，n表示上界， k从i开始取数，一直取到n,全部加起来 12345678200∑ i = 5+6+7+8+9+......+200i=5500∑ i= 10+11+12+13+14+......+500i=10">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多线程">
-<meta property="og:url" content="http://yoursite.com/2017/04/24/java多线程开发/index.html">
+<meta property="og:title" content="数学问题">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/tensorflow/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="多线程interrupted测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外） 留意i– 和System.out.println()的异常123456789101112131415161718192021222324	public class">
-<meta property="og:updated_time" content="2017-05-17T13:12:10.000Z">
+<meta property="og:description" content="∑的用法其中i表示下界，n表示上界， k从i开始取数，一直取到n,全部加起来 12345678200∑ i = 5+6+7+8+9+......+200i=5500∑ i= 10+11+12+13+14+......+500i=10">
+<meta property="og:updated_time" content="2017-07-14T03:57:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多线程">
-<meta name="twitter:description" content="多线程interrupted测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外） 留意i– 和System.out.println()的异常123456789101112131415161718192021222324	public class">
+<meta name="twitter:title" content="数学问题">
+<meta name="twitter:description" content="∑的用法其中i表示下界，n表示上界， k从i开始取数，一直取到n,全部加起来 12345678200∑ i = 5+6+7+8+9+......+200i=5500∑ i= 10+11+12+13+14+......+500i=10">
 
     
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -80,14 +79,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/04/24/java多线程开发/" title="多线程" itemprop="url">多线程</a>
+      <a href="/2017/07/14/tensorflow/" title="数学问题" itemprop="url">数学问题</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-23T22:16:00.000Z" itemprop="datePublished"> 发表于 2017-04-24</time>
+    <time datetime="2017-07-14T03:57:11.000Z" itemprop="datePublished"> 发表于 2017-07-14</time>
     
   </p>
 </header>
@@ -96,25 +95,17 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程"><span class="toc-number">1.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#interrupted"><span class="toc-number">1.1.</span> <span class="toc-text">interrupted</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#留意i–-和System-out-println-的异常"><span class="toc-number">2.</span> <span class="toc-text">留意i– 和System.out.println()的异常</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#∑的用法"><span class="toc-number">1.</span> <span class="toc-text">∑的用法</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h4 id="interrupted"><a href="#interrupted" class="headerlink" title="interrupted"></a>interrupted</h4><p>测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外）</p>
-<h3 id="留意i–-和System-out-println-的异常"><a href="#留意i–-和System-out-println-的异常" class="headerlink" title="留意i– 和System.out.println()的异常"></a>留意i– 和System.out.println()的异常</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">	public class MyThread extends Thread &#123;</div><div class="line">    private int i = 5;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;i=&quot; + i--);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line">        MyThread a = new MyThread();</div><div class="line">        Thread b1 = new Thread(a);</div><div class="line">        Thread b2 = new Thread(a);</div><div class="line">        Thread b3 = new Thread(a);</div><div class="line">        Thread b4 = new Thread(a);</div><div class="line">        Thread b5 = new Thread(a);</div><div class="line">        b5.start();</div><div class="line">        b2.start();</div><div class="line">        b4.start();</div><div class="line">        b3.start();</div><div class="line">        b1.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class MyThread extends Thread &#123;</div><div class="line">    private int i = 5;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        i--;</div><div class="line">        System.out.println(&quot;i=&quot; +i);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line">        MyThread a = new MyThread();</div><div class="line">        Thread b1 = new Thread(a);</div><div class="line">        Thread b2 = new Thread(a);</div><div class="line">        Thread b3 = new Thread(a);</div><div class="line">        Thread b4 = new Thread(a);</div><div class="line">        Thread b5 = new Thread(a);</div><div class="line">        b5.start();</div><div class="line">        b2.start();</div><div class="line">        b4.start();</div><div class="line">        b3.start();</div><div class="line">        b1.start();</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以上代码执行的结果不一样的，是因为println方法，加了线程锁</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public void println(String x) &#123;</div><div class="line">    synchronized (this) &#123;</div><div class="line">        print(x);</div><div class="line">        newLine();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-  
+		<hr>
+<h3 id="∑的用法"><a href="#∑的用法" class="headerlink" title="∑的用法"></a>∑的用法</h3><p>其中i表示下界，n表示上界， k从i开始取数，一直取到n,全部加起来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">200</div><div class="line">∑ i = 5+6+7+8+9+......+200</div><div class="line">i=5</div><div class="line"></div><div class="line">500</div><div class="line">∑ i= 10+11+12+13+14+......+500</div><div class="line">i=10</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/多线程/">多线程</a>
-  </div>
 
 </div>
 
@@ -122,7 +113,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/04/24/java多线程开发/" data-title="多线程 | Hexo" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/07/14/tensorflow/" data-title="数学问题 | Hexo" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -136,18 +127,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/05/03/雨奔/" title="雨奔">
+ <a href="/2017/07/14/pt-query-digest/" title="mysql注意点">
   <strong>上一篇：</strong><br/>
   <span>
-  雨奔</span>
+  mysql注意点</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/04/20/面试2/"  title="kafka">
+<a href="/2017/07/14/性能指标/"  title="性能指标">
  <strong>下一篇：</strong><br/> 
- <span>kafka
+ <span>性能指标
 </span>
 </a>
 </div>
@@ -178,7 +169,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程"><span class="toc-number">1.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#interrupted"><span class="toc-number">1.1.</span> <span class="toc-text">interrupted</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#留意i–-和System-out-println-的异常"><span class="toc-number">2.</span> <span class="toc-text">留意i– 和System.out.println()的异常</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#∑的用法"><span class="toc-number">1.</span> <span class="toc-text">∑的用法</span></a></li></ol>
  
   </div>
 

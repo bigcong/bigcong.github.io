@@ -4,24 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>多线程 | Hexo</title>
+    <title>性能指标 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="bigcong">
     
 
     
-    <meta name="description" content="多线程interrupted测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外） 留意i– 和System.out.println()的异常123456789101112131415161718192021222324	public class">
-<meta name="keywords" content="多线程">
+    <meta name="description" content="吞吐量（OLTP）吞吐量指的是单位时间内事务处理数。这一直是的数据库应用指标。常用的测试单位时每秒事务数（TPS）,有些时候也采用每分钟事务数（TPM） 相应时间或者延迟这个指标用于测试任务所需的整体时间。根据具体的应用，测试的时间单位可能是微妙，毫秒，秒或者分钟。根据不同的时间单位可以计算出平均响应时间，最小响应时间，最大相应时间和所占百分比。通常可以使用百分比响应时间来代替最大响应时间。例如">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多线程">
-<meta property="og:url" content="http://yoursite.com/2017/04/24/java多线程开发/index.html">
+<meta property="og:title" content="性能指标">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/性能指标/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="多线程interrupted测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外） 留意i– 和System.out.println()的异常123456789101112131415161718192021222324	public class">
-<meta property="og:updated_time" content="2017-05-17T13:12:10.000Z">
+<meta property="og:description" content="吞吐量（OLTP）吞吐量指的是单位时间内事务处理数。这一直是的数据库应用指标。常用的测试单位时每秒事务数（TPS）,有些时候也采用每分钟事务数（TPM） 相应时间或者延迟这个指标用于测试任务所需的整体时间。根据具体的应用，测试的时间单位可能是微妙，毫秒，秒或者分钟。根据不同的时间单位可以计算出平均响应时间，最小响应时间，最大相应时间和所占百分比。通常可以使用百分比响应时间来代替最大响应时间。例如">
+<meta property="og:updated_time" content="2017-07-14T03:55:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多线程">
-<meta name="twitter:description" content="多线程interrupted测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外） 留意i– 和System.out.println()的异常123456789101112131415161718192021222324	public class">
+<meta name="twitter:title" content="性能指标">
+<meta name="twitter:description" content="吞吐量（OLTP）吞吐量指的是单位时间内事务处理数。这一直是的数据库应用指标。常用的测试单位时每秒事务数（TPS）,有些时候也采用每分钟事务数（TPM） 相应时间或者延迟这个指标用于测试任务所需的整体时间。根据具体的应用，测试的时间单位可能是微妙，毫秒，秒或者分钟。根据不同的时间单位可以计算出平均响应时间，最小响应时间，最大相应时间和所占百分比。通常可以使用百分比响应时间来代替最大响应时间。例如">
 
     
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -80,14 +79,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/04/24/java多线程开发/" title="多线程" itemprop="url">多线程</a>
+      <a href="/2017/07/14/性能指标/" title="性能指标" itemprop="url">性能指标</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-23T22:16:00.000Z" itemprop="datePublished"> 发表于 2017-04-24</time>
+    <time datetime="2017-07-14T03:55:20.000Z" itemprop="datePublished"> 发表于 2017-07-14</time>
     
   </p>
 </header>
@@ -96,25 +95,20 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程"><span class="toc-number">1.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#interrupted"><span class="toc-number">1.1.</span> <span class="toc-text">interrupted</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#留意i–-和System-out-println-的异常"><span class="toc-number">2.</span> <span class="toc-text">留意i– 和System.out.println()的异常</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#吞吐量（OLTP）"><span class="toc-number">1.</span> <span class="toc-text">吞吐量（OLTP）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相应时间或者延迟"><span class="toc-number">2.</span> <span class="toc-text">相应时间或者延迟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并发性"><span class="toc-number">3.</span> <span class="toc-text">并发性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可扩展性"><span class="toc-number">4.</span> <span class="toc-text">可扩展性</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h4 id="interrupted"><a href="#interrupted" class="headerlink" title="interrupted"></a>interrupted</h4><p>测试当前线程是否已经中断，线程的中断状态由该方法清除。换句话说，如果连续调用该方法，则第二次调用返回false（在一次调用的时候，已清除了其中的状态之后，且第二次调用检查完中断状态，当前线程再次中断中断除外）</p>
-<h3 id="留意i–-和System-out-println-的异常"><a href="#留意i–-和System-out-println-的异常" class="headerlink" title="留意i– 和System.out.println()的异常"></a>留意i– 和System.out.println()的异常</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">	public class MyThread extends Thread &#123;</div><div class="line">    private int i = 5;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        System.out.println(&quot;i=&quot; + i--);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line">        MyThread a = new MyThread();</div><div class="line">        Thread b1 = new Thread(a);</div><div class="line">        Thread b2 = new Thread(a);</div><div class="line">        Thread b3 = new Thread(a);</div><div class="line">        Thread b4 = new Thread(a);</div><div class="line">        Thread b5 = new Thread(a);</div><div class="line">        b5.start();</div><div class="line">        b2.start();</div><div class="line">        b4.start();</div><div class="line">        b3.start();</div><div class="line">        b1.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class MyThread extends Thread &#123;</div><div class="line">    private int i = 5;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        i--;</div><div class="line">        System.out.println(&quot;i=&quot; +i);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line">        MyThread a = new MyThread();</div><div class="line">        Thread b1 = new Thread(a);</div><div class="line">        Thread b2 = new Thread(a);</div><div class="line">        Thread b3 = new Thread(a);</div><div class="line">        Thread b4 = new Thread(a);</div><div class="line">        Thread b5 = new Thread(a);</div><div class="line">        b5.start();</div><div class="line">        b2.start();</div><div class="line">        b4.start();</div><div class="line">        b3.start();</div><div class="line">        b1.start();</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以上代码执行的结果不一样的，是因为println方法，加了线程锁</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public void println(String x) &#123;</div><div class="line">    synchronized (this) &#123;</div><div class="line">        print(x);</div><div class="line">        newLine();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+		<hr>
+<h3 id="吞吐量（OLTP）"><a href="#吞吐量（OLTP）" class="headerlink" title="吞吐量（OLTP）"></a>吞吐量（OLTP）</h3><p>吞吐量指的是单位时间内事务处理数。这一直是的数据库应用指标。常用的测试单位时每秒事务数（TPS）,有些时候也采用每分钟事务数（TPM）</p>
+<h3 id="相应时间或者延迟"><a href="#相应时间或者延迟" class="headerlink" title="相应时间或者延迟"></a>相应时间或者延迟</h3><p>这个指标用于测试任务所需的整体时间。根据具体的应用，测试的时间单位可能是微妙，毫秒，秒或者分钟。根据不同的时间单位可以计算出平均响应时间，最小响应时间，最大相应时间和所占百分比。通常可以使用百分比响应时间来代替最大响应时间。例如如95的相应时间都是在5毫秒，表示任务95%的时间段都可以在5毫秒之内完成</p>
+<h3 id="并发性"><a href="#并发性" class="headerlink" title="并发性"></a>并发性</h3><p>Web服务器的并发性更准确的度量指标，应该是在任意时间有多少同时发生的并发请求。<br>并发性的测量完全不同于响应时间和吞吐量。mysql的并发性，可以通过sysbench指定32，64或者128线程测试，然后在测试期间记录mysql数据库的Threads_running状态值</p>
+<h3 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h3><p>可扩展性指的是，给系统增加一倍的工作，在理想情况下就能获得两倍的结果（即吞吐量增加一倍）。或者说，给系统增加一倍的资源（比如两倍的CPU数），就可以获得两倍的吞吐量。当然，同时性能（响应时间）也必须在可以接受的范围内。大多是系统是无法做到如此理想的线性扩展的，随着压力的变化，吞吐量和性能都可能越来越差。  </p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/多线程/">多线程</a>
-  </div>
 
 </div>
 
@@ -122,7 +116,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/04/24/java多线程开发/" data-title="多线程 | Hexo" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/07/14/性能指标/" data-title="性能指标 | Hexo" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -136,18 +130,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/05/03/雨奔/" title="雨奔">
+ <a href="/2017/07/14/tensorflow/" title="数学问题">
   <strong>上一篇：</strong><br/>
   <span>
-  雨奔</span>
+  数学问题</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/04/20/面试2/"  title="kafka">
+<a href="/2017/06/01/redis 自启服务脚本/"  title="redis自启服务脚本">
  <strong>下一篇：</strong><br/> 
- <span>kafka
+ <span>redis自启服务脚本
 </span>
 </a>
 </div>
@@ -178,7 +172,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程"><span class="toc-number">1.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#interrupted"><span class="toc-number">1.1.</span> <span class="toc-text">interrupted</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#留意i–-和System-out-println-的异常"><span class="toc-number">2.</span> <span class="toc-text">留意i– 和System.out.println()的异常</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#吞吐量（OLTP）"><span class="toc-number">1.</span> <span class="toc-text">吞吐量（OLTP）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相应时间或者延迟"><span class="toc-number">2.</span> <span class="toc-text">相应时间或者延迟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并发性"><span class="toc-number">3.</span> <span class="toc-text">并发性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可扩展性"><span class="toc-number">4.</span> <span class="toc-text">可扩展性</span></a></li></ol>
  
   </div>
 
