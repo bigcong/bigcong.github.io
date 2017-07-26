@@ -77,6 +77,114 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/07/20/数据库三大范式/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-20T06:28:02.000Z" itemprop="datePublished"> 发表于 2017-07-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h3><ol>
+<li>每一列属性都是不可再分的属性，确保每一个列的原子性</li>
+<li>两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据</li>
+</ol>
+<h3 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h3><ol>
+<li>每一行数据只能和其中一列相关，即一列只做一件事情</li>
+</ol>
+<h3 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h3><ol>
+<li>数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/07/19/java/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-19T02:20:02.000Z" itemprop="datePublished"> 发表于 2017-07-19</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="优雅读取文件"><a href="#优雅读取文件" class="headerlink" title="优雅读取文件"></a>优雅读取文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; lines = Files.readAllLines(Paths.get(&quot;/Users/cong/3.txt&quot;), StandardCharsets</div><div class="line">               .UTF_8);</div></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/07/14/pt-query-digest/" title="mysql注意点" itemprop="url">mysql注意点</a>
   </h1>
   <p class="article-author">By
@@ -94,6 +202,17 @@
 <h3 id="pt-query-digest"><a href="#pt-query-digest" class="headerlink" title="pt-query-digest"></a>pt-query-digest</h3><p>可以慢查询将查询报告保存到数据库中，以及追踪负载随着时间的变化</p>
 <h3 id="剖析单条查询"><a href="#剖析单条查询" class="headerlink" title="剖析单条查询"></a>剖析单条查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set profiling=1;</div><div class="line">show profiles;</div><div class="line">show profile for query 1;</div><div class="line">show status;</div><div class="line">show global status;</div></pre></td></tr></table></figure>
 <h3 id="DATETIME-和TIMESAMP-的区别"><a href="#DATETIME-和TIMESAMP-的区别" class="headerlink" title="DATETIME 和TIMESAMP 的区别"></a>DATETIME 和TIMESAMP 的区别</h3><p>dateTime和timesamp列可以存储相同类型的数据：时间日期，精确到秒，然而timestamp只试用datetime一半的存储空间，并且会根据时区的变化，具有特殊更新能力，timestamp允许的范围比较小。</p>
+<h3 id="DECIMAL"><a href="#DECIMAL" class="headerlink" title="DECIMAL"></a>DECIMAL</h3><p>因为CPU不支持DECIMAL的直接计算。对于DECIMAL列，可以指定小数点前后所允许的最大位数，这也会消耗更多的空间消耗。高版本的mysql会将DECIMAL打包存在一个二进制的字符串中，一种9个字节，小数点后用4个字节，小数点前用4个字节，小数点占一个字节。高版本mysql自身实现了高精度计算。相对而言，cpu直接支持浮点型计算，运行时间更快</p>
+<h3 id="VARCHAR-和CHAR"><a href="#VARCHAR-和CHAR" class="headerlink" title="VARCHAR 和CHAR"></a>VARCHAR 和CHAR</h3><h4 id="VARCHAR"><a href="#VARCHAR" class="headerlink" title="VARCHAR"></a>VARCHAR</h4><ol>
+<li>用于存储可变字符串，是最常见的字符串数据类型，比定长类型更节省空间。当时如果mysql表使用ROW_FORMT=FIXED创建的话，每一行都会使用定长存储，这会浪费空间</li>
+<li>varchar需要使用1或2个额外字节记录字符串的长度，如果列的最大长度小于255，则使用1个字节，否则就需要2个字节</li>
+<li>如果update操作是，使行变得比原来更长，这就是导致了需要做额外的工作，InnoDB则需要分裂页来使行可以放在页内。</li>
+<li>varchar适合：字符串的最大长度比平均长度大很多，列的跟新很少，所以碎片不是问题。</li>
+</ol>
+<h4 id="CHAR"><a href="#CHAR" class="headerlink" title="CHAR"></a>CHAR</h4><p>char类型是定长的,适合存储很短的字符串，或者所有的都接近同一个长度。例如，char非常适合存储Md5值<br>定长的char类型不容易产生碎片，对于非常短的列，char比varchar在存储空间上也更有效率。char(1)只需要一个字节，而varchar(1)却需要两个字节，因为还有一个记录长度的额外字节</p>
+<h4 id="BLOB和TEXT类型"><a href="#BLOB和TEXT类型" class="headerlink" title="BLOB和TEXT类型"></a>BLOB和TEXT类型</h4><p>BlOB类型存储的是二进制数据，没有排序规则或者字符集，而TEXT类型有字符集和排序规则<br>它只对每一个列的最前max_sort_length， 字节而不是整个字符串做排序。<br>不能将BLOB和TEXT列全部长度进行索引，也不能使用这些索引消除排序</p>
+<h4 id="使用枚举-ENUM-代替字符串类型"><a href="#使用枚举-ENUM-代替字符串类型" class="headerlink" title="使用枚举(ENUM)代替字符串类型"></a>使用枚举(ENUM)代替字符串类型</h4><p>实际存储为整数，而不是字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select e+0 form eum_test;</div></pre></td></tr></table></figure>
 
         
         
@@ -214,148 +333,6 @@
     <footer class="article-footer clearfix">
 <div class="article-catetags">
 
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/06/01/redis 自启服务脚本/" title="redis自启服务脚本" itemprop="url">redis自启服务脚本</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
-		
-  <p class="article-time">
-    <time datetime="2017-06-01T03:17:00.000Z" itemprop="datePublished"> 发表于 2017-06-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <hr>
-<h3 id="启动脚本"><a href="#启动脚本" class="headerlink" title="启动脚本"></a>启动脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"># chkconfig:   2345 90 10</div><div class="line"></div><div class="line"># description:  Redis is a persistent key-value database</div><div class="line"></div><div class="line">###########################</div><div class="line">PATH=/usr/local/bin:/sbin:/usr/bin:/bin</div><div class="line">   </div><div class="line">REDISPORT=6379</div><div class="line">EXEC=/data/lib/redis-3.2.8/src/redis-server</div><div class="line">REDIS_CLI=/data/lib/redis-3.2.8/src/redis-cli</div><div class="line">   </div><div class="line">PIDFILE=/var/run/redis_6379.pid</div><div class="line">CONF=&quot;/data/lib/redis-3.2.8/redis.conf&quot;</div><div class="line">   </div><div class="line">case &quot;$1&quot; in</div><div class="line">    start)</div><div class="line">        if [ -f $PIDFILE ]</div><div class="line">        then</div><div class="line">                echo &quot;$PIDFILE exists, process is already running or crashed&quot;</div><div class="line">        else</div><div class="line">                echo &quot;Starting Redis server...&quot;</div><div class="line">                $EXEC $CONF</div><div class="line">        fi</div><div class="line">        if [ &quot;$?&quot;=&quot;0&quot; ] </div><div class="line">        then</div><div class="line">              echo &quot;Redis is running...&quot;</div><div class="line">        fi</div><div class="line">        ;;</div><div class="line">    stop)</div><div class="line">        if [ ! -f $PIDFILE ]</div><div class="line">        then</div><div class="line">                echo &quot;$PIDFILE does not exist, process is not running&quot;</div><div class="line">        else</div><div class="line">                PID=$(cat $PIDFILE)</div><div class="line">                echo &quot;Stopping ...&quot;</div><div class="line">                $REDIS_CLI -p $REDISPORT SHUTDOWN</div><div class="line">                while [ -x $&#123;PIDFILE&#125; ]</div><div class="line">               do</div><div class="line">                    echo &quot;Waiting for Redis to shutdown ...&quot;</div><div class="line">                    sleep 1</div><div class="line">                done</div><div class="line">                echo &quot;Redis stopped&quot;</div><div class="line">        fi</div><div class="line">        ;;</div><div class="line">   restart|force-reload)</div><div class="line">        $&#123;0&#125; stop</div><div class="line">        $&#123;0&#125; start</div><div class="line">        ;;</div><div class="line">  *)</div><div class="line">    echo &quot;Usage: /etc/init.d/redis &#123;start|stop|restart|force-reload&#125;&quot; &gt;&amp;2</div><div class="line">        exit 1</div><div class="line">esac</div><div class="line">##############################</div></pre></td></tr></table></figure>
-<h3 id="设置权限"><a href="#设置权限" class="headerlink" title="设置权限"></a>设置权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chmod +x redis</div><div class="line">chkconfig --add redis</div><div class="line">chkconfig redis on</div><div class="line">chkconfig --level 3 redis on</div></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/命令/">命令</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/redis/">redis</a><a href="/tags/运维/">运维</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/05/17/git-相关操作/" title="常用的命令" itemprop="url">常用的命令</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
-		
-  <p class="article-time">
-    <time datetime="2017-05-17T08:17:00.000Z" itemprop="datePublished"> 发表于 2017-05-17</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><h3 id="Mac查看端口占用"><a href="#Mac查看端口占用" class="headerlink" title="Mac查看端口占用"></a>Mac查看端口占用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsof -i tcp:8080</div></pre></td></tr></table></figure>
-<h3 id="给予某个用户权限某个用户权限"><a href="#给予某个用户权限某个用户权限" class="headerlink" title="给予某个用户权限某个用户权限"></a>给予某个用户权限某个用户权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown -R jenkins:jenkins /data/app/jar/</div></pre></td></tr></table></figure>
-<h3 id="安装ZSH"><a href="#安装ZSH" class="headerlink" title="安装ZSH"></a>安装ZSH</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install zsh</div><div class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></div></pre></td></tr></table></figure>
-<h3 id="启用root"><a href="#启用root" class="headerlink" title="启用root"></a>启用root</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo passwd root</div><div class="line">vim /etc/ssh/sshd_config</div><div class="line">把这行修改为“PermitRootLogin yes</div></pre></td></tr></table></figure>
-<h3 id="ssh-无密码登录"><a href="#ssh-无密码登录" class="headerlink" title="ssh 无密码登录"></a>ssh 无密码登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa </div><div class="line">vim .ssh/authorized_keys</div><div class="line">chmod 600 .ssh/authorized_keys</div><div class="line">chmod 700 -R .ssh</div></pre></td></tr></table></figure>
-<h3 id="给予某个用户权限某个用户权限-1"><a href="#给予某个用户权限某个用户权限-1" class="headerlink" title="给予某个用户权限某个用户权限"></a>给予某个用户权限某个用户权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown -R jenkins:jenkins /data/app/jar/</div></pre></td></tr></table></figure>
-<h3 id="curl-模拟提交文件"><a href="#curl-模拟提交文件" class="headerlink" title="curl 模拟提交文件"></a>curl 模拟提交文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -F &quot;file=@/Users/cong/Downloads/1.jpg&quot; http://localhost:8081/upload/test</div></pre></td></tr></table></figure>
-<h2 id="运维命令"><a href="#运维命令" class="headerlink" title="运维命令"></a>运维命令</h2><h3 id="mysql将结果导出文件"><a href="#mysql将结果导出文件" class="headerlink" title="mysql将结果导出文件"></a>mysql将结果导出文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -h 172.1.0.1  -uroot -pcc  --default-character-set=utf8 jeeplus_schema -e &quot;select count(*),uname,phone from user group by uname  having count(*)&gt;1;&quot; &gt; /tmp/repeat.txt</div></pre></td></tr></table></figure>
-<h3 id="mysql-关联表一起更新"><a href="#mysql-关联表一起更新" class="headerlink" title="mysql 关联表一起更新"></a>mysql 关联表一起更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">UPDATE user_points p,</div><div class="line"> (</div><div class="line">	SELECT</div><div class="line">		uuid,</div><div class="line">		sum(number) outnumber</div><div class="line">	FROM</div><div class="line">		user_itl_consume</div><div class="line">	GROUP BY</div><div class="line">		uuid</div><div class="line">) outcome,</div><div class="line"> (</div><div class="line">	SELECT</div><div class="line">		uuid,</div><div class="line">		sum(number) innumber</div><div class="line">	FROM</div><div class="line">		user_itl_income</div><div class="line">	GROUP BY</div><div class="line">		uuid</div><div class="line">) income</div><div class="line">SET p.point = (</div><div class="line">	income.innumber - outcome.outnumber</div><div class="line">)</div><div class="line">WHERE</div><div class="line">	p.uuid = income.uuid</div><div class="line">AND p.uuid = outcome.uuid</div><div class="line">AND income.innumber - outcome.outnumber != p.point;</div></pre></td></tr></table></figure>
-<h3 id="备份数据库脚本"><a href="#备份数据库脚本" class="headerlink" title="备份数据库脚本"></a>备份数据库脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh </div><div class="line">date=` date +%F`</div><div class="line">echo $date</div><div class="line"> mysqldump -h 172.0.0.1  -uroot -pcc cc  &gt; /data/app/sql/cc-$date.sql</div></pre></td></tr></table></figure>
-<h3 id="redis常用配置"><a href="#redis常用配置" class="headerlink" title="redis常用配置"></a>redis常用配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">daemonize yes  后台启动</div><div class="line">bind 0.0.0.0  绑定IP</div><div class="line">dir /var/lib/redis  修改数据文件存储位置</div></pre></td></tr></table></figure>
-<h2 id="树莓派"><a href="#树莓派" class="headerlink" title="树莓派"></a>树莓派</h2><h3 id="Mac-下将img-烧录到-内存卡中"><a href="#Mac-下将img-烧录到-内存卡中" class="headerlink" title="Mac 下将img 烧录到 内存卡中"></a>Mac 下将img 烧录到 内存卡中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dd <span class="keyword">if</span>=2016-03-18-raspbian-jessie-lite.img of=/dev/rdisk2 bs=32m</div></pre></td></tr></table></figure>
-<h3 id="更换树莓派源"><a href="#更换树莓派源" class="headerlink" title="更换树莓派源"></a>更换树莓派源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vim /etc/apt/sources.list</div><div class="line">注释官方源之后，加入下面这些</div><div class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ wheezy main contrib non-free rpi </div><div class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ wheezy main contrib non-free rpi </div><div class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib</div><div class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib</div></pre></td></tr></table></figure>
-<h2 id="git-命令"><a href="#git-命令" class="headerlink" title="git 命令"></a>git 命令</h2><h3 id="git-回退某个版本"><a href="#git-回退某个版本" class="headerlink" title="git 回退某个版本"></a>git 回退某个版本</h3><p>有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log</div></pre></td></tr></table></figure>
-<p>然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard   a0dd99<span class="built_in">cd</span>7a00ac95d3e0a54d4b0a1a51db41d498</div></pre></td></tr></table></figure>
-<p>这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="_">-f</span></div></pre></td></tr></table></figure>
-<h3 id="git-查看远程分支"><a href="#git-查看远程分支" class="headerlink" title="git 查看远程分支"></a>git 查看远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
-<h3 id="git-拉取远程分支并创建本地分支"><a href="#git-拉取远程分支并创建本地分支" class="headerlink" title="git 拉取远程分支并创建本地分支"></a>git 拉取远程分支并创建本地分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b develop  remotes/origin/develop</div></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/命令/">命令</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/命令/">命令</a>
-  </div>
 
 </div>
 
