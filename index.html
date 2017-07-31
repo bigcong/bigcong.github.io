@@ -77,6 +77,56 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/07/27/mysql命令 /" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-27T12:23:54.000Z" itemprop="datePublished"> 发表于 2017-07-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="mysql-查看表占用"><a href="#mysql-查看表占用" class="headerlink" title="mysql 查看表占用"></a>mysql 查看表占用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select table_name,data_length from information_schema.tables;</div></pre></td></tr></table></figure>
+<h3 id="查看慢查询"><a href="#查看慢查询" class="headerlink" title="查看慢查询"></a>查看慢查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show full processlist;</div></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/07/20/数据库三大范式/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
@@ -299,63 +349,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/07/14/性能指标/" title="性能指标" itemprop="url">性能指标</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
-		
-  <p class="article-time">
-    <time datetime="2017-07-14T03:55:20.000Z" itemprop="datePublished"> 发表于 2017-07-14</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <hr>
-<h3 id="吞吐量（OLTP）"><a href="#吞吐量（OLTP）" class="headerlink" title="吞吐量（OLTP）"></a>吞吐量（OLTP）</h3><p>吞吐量指的是单位时间内事务处理数。这一直是的数据库应用指标。常用的测试单位时每秒事务数（TPS）,有些时候也采用每分钟事务数（TPM）</p>
-<h3 id="相应时间或者延迟"><a href="#相应时间或者延迟" class="headerlink" title="相应时间或者延迟"></a>相应时间或者延迟</h3><p>这个指标用于测试任务所需的整体时间。根据具体的应用，测试的时间单位可能是微妙，毫秒，秒或者分钟。根据不同的时间单位可以计算出平均响应时间，最小响应时间，最大相应时间和所占百分比。通常可以使用百分比响应时间来代替最大响应时间。例如如95的相应时间都是在5毫秒，表示任务95%的时间段都可以在5毫秒之内完成</p>
-<h3 id="并发性"><a href="#并发性" class="headerlink" title="并发性"></a>并发性</h3><p>Web服务器的并发性更准确的度量指标，应该是在任意时间有多少同时发生的并发请求。<br>并发性的测量完全不同于响应时间和吞吐量。mysql的并发性，可以通过sysbench指定32，64或者128线程测试，然后在测试期间记录mysql数据库的Threads_running状态值</p>
-<h3 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h3><p>可扩展性指的是，给系统增加一倍的工作，在理想情况下就能获得两倍的结果（即吞吐量增加一倍）。或者说，给系统增加一倍的资源（比如两倍的CPU数），就可以获得两倍的吞吐量。当然，同时性能（响应时间）也必须在可以接受的范围内。大多是系统是无法做到如此理想的线性扩展的，随着压力的变化，吞吐量和性能都可能越来越差。  </p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
 </div>

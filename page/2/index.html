@@ -77,6 +77,60 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/07/14/性能指标/" title="性能指标" itemprop="url">性能指标</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-14T03:55:20.000Z" itemprop="datePublished"> 发表于 2017-07-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <hr>
+<h3 id="吞吐量（OLTP）"><a href="#吞吐量（OLTP）" class="headerlink" title="吞吐量（OLTP）"></a>吞吐量（OLTP）</h3><p>吞吐量指的是单位时间内事务处理数。这一直是的数据库应用指标。常用的测试单位时每秒事务数（TPS）,有些时候也采用每分钟事务数（TPM）</p>
+<h3 id="相应时间或者延迟"><a href="#相应时间或者延迟" class="headerlink" title="相应时间或者延迟"></a>相应时间或者延迟</h3><p>这个指标用于测试任务所需的整体时间。根据具体的应用，测试的时间单位可能是微妙，毫秒，秒或者分钟。根据不同的时间单位可以计算出平均响应时间，最小响应时间，最大相应时间和所占百分比。通常可以使用百分比响应时间来代替最大响应时间。例如如95的相应时间都是在5毫秒，表示任务95%的时间段都可以在5毫秒之内完成</p>
+<h3 id="并发性"><a href="#并发性" class="headerlink" title="并发性"></a>并发性</h3><p>Web服务器的并发性更准确的度量指标，应该是在任意时间有多少同时发生的并发请求。<br>并发性的测量完全不同于响应时间和吞吐量。mysql的并发性，可以通过sysbench指定32，64或者128线程测试，然后在测试期间记录mysql数据库的Threads_running状态值</p>
+<h3 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h3><p>可扩展性指的是，给系统增加一倍的工作，在理想情况下就能获得两倍的结果（即吞吐量增加一倍）。或者说，给系统增加一倍的资源（比如两倍的CPU数），就可以获得两倍的吞吐量。当然，同时性能（响应时间）也必须在可以接受的范围内。大多是系统是无法做到如此理想的线性扩展的，随着压力的变化，吞吐量和性能都可能越来越差。  </p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/06/01/redis 自启服务脚本/" title="redis自启服务脚本" itemprop="url">redis自启服务脚本</a>
   </h1>
   <p class="article-author">By
@@ -338,93 +392,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/05/11/忙活的一天/" title="忙活的一天" itemprop="url">忙活的一天</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
-		
-  <p class="article-time">
-    <time datetime="2017-05-11T13:08:00.000Z" itemprop="datePublished"> 发表于 2017-05-11</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="忙活的一天"><a href="#忙活的一天" class="headerlink" title="忙活的一天"></a>忙活的一天</h2><hr>
-<p>忙活的一天，身体有点累，眼睛也有点累，我也不知道今天为什么这么累，我今天也没有做什么有功劳的事情，说起来的几点话：</p>
-<p>我把我的hexo的评论系统终于弄好了，我开始用disqus这个评论系统，我在上午的时候，还用的自得其乐，下午的听了挖矿的原理的之后，我就不能用了，于是我就很着急，最后才发现，被墙了，这是非常悲剧的原因，我们国家什么时候，能自信起来，不要像一个小孩一样，总之得到这个消息的时候，我很无奈了，后来我就用了，我国内的搜狐的评论系统畅言，我真的像吐槽这个系统，首先这个系统，不能用邮箱注册，我是非常抗拒的，我认为一个网站不能用邮箱注册，那么这个网站就非常小众，就没有长远眼光，我从心里也是鄙视的，搜狐的畅言就是这样一个系统，后来我注册之后，又让我去备案，又让我填很多信息，这让我很不爽，我觉得有一种被骗的感觉，我甚至开始怀疑，是不是搜狐的畅言，把别的评论系统搞掉，比如让了多说系统关闭，让disqus系统被墙，和政府勾结起来，不是我心怀恶意，只是这样的事情，在中国发生了太多了</p>
-<p>后来我看到了莫烦python这个博主，用了一个韩国的评论系统，叫做来比力，折腾一番，改了jacman主题下的comment.ejs，最后搞定，这是comment.ejs</p>
-<pre><code class="javascript">
-&lt;!-- 来必力City版安装代码 --&gt;
-&lt;div id="lv-container" data-id="city" data-uid="你的appId"&gt;
-&lt;script type="text/javascript"&gt;
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-&lt;/script&gt;
-&lt;noscript&gt;为正常使用来必力评论功能请激活JavaScript&lt;/noscript&gt;
-&lt;/div&gt;
-&lt;!-- City版安装代码已完成 --&gt;
-</code></pre>
-<p>下午的时候，我把树莓派上的装上了挖矿系统，我喜欢能挖到币，哈哈</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/随笔/">随笔</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/加班/">加班</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
+    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
   </nav>
 
 </div>

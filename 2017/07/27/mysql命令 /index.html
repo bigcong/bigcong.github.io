@@ -11,16 +11,16 @@
     
 
     
-    <meta name="description" content="第一范式 每一列属性都是不可再分的属性，确保每一个列的原子性 两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据  第二范式 每一行数据只能和其中一列相关，即一列只做一件事情  第三范式 数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系">
+    <meta name="description" content="mysql 查看表占用1select table_name,data_length from information_schema.tables; 查看慢查询1show full processlist;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2017/07/20/数据库三大范式/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/07/27/mysql命令 /index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第一范式 每一列属性都是不可再分的属性，确保每一个列的原子性 两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据  第二范式 每一行数据只能和其中一列相关，即一列只做一件事情  第三范式 数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系">
-<meta property="og:updated_time" content="2017-07-20T06:38:56.000Z">
+<meta property="og:description" content="mysql 查看表占用1select table_name,data_length from information_schema.tables; 查看慢查询1show full processlist;">
+<meta property="og:updated_time" content="2017-07-31T09:21:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="第一范式 每一列属性都是不可再分的属性，确保每一个列的原子性 两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据  第二范式 每一行数据只能和其中一列相关，即一列只做一件事情  第三范式 数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系">
+<meta name="twitter:description" content="mysql 查看表占用1select table_name,data_length from information_schema.tables; 查看慢查询1show full processlist;">
 
     
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -79,14 +79,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/07/20/数据库三大范式/" title="" itemprop="url"></a>
+      <a href="/2017/07/27/mysql命令 /" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
 		
   <p class="article-time">
-    <time datetime="2017-07-20T06:28:02.000Z" itemprop="datePublished"> 发表于 2017-07-20</time>
+    <time datetime="2017-07-27T12:23:54.000Z" itemprop="datePublished"> 发表于 2017-07-27</time>
     
   </p>
 </header>
@@ -95,21 +95,12 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一范式"><span class="toc-number">1.</span> <span class="toc-text">第一范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二范式"><span class="toc-number">2.</span> <span class="toc-text">第二范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三范式"><span class="toc-number">3.</span> <span class="toc-text">第三范式</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-查看表占用"><span class="toc-number">1.</span> <span class="toc-text">mysql 查看表占用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看慢查询"><span class="toc-number">1.1.</span> <span class="toc-text">查看慢查询</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h3 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h3><ol>
-<li>每一列属性都是不可再分的属性，确保每一个列的原子性</li>
-<li>两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据</li>
-</ol>
-<h3 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h3><ol>
-<li>每一行数据只能和其中一列相关，即一列只做一件事情</li>
-</ol>
-<h3 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h3><ol>
-<li>数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系</li>
-</ol>
-  
+		<h2 id="mysql-查看表占用"><a href="#mysql-查看表占用" class="headerlink" title="mysql 查看表占用"></a>mysql 查看表占用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select table_name,data_length from information_schema.tables;</div></pre></td></tr></table></figure>
+<h3 id="查看慢查询"><a href="#查看慢查询" class="headerlink" title="查看慢查询"></a>查看慢查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show full processlist;</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -121,7 +112,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/07/20/数据库三大范式/" data-title="Hexo" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/07/27/mysql命令 /" data-title="Hexo" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -134,17 +125,9 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/07/27/mysql命令 /" title="">
-  <strong>上一篇：</strong><br/>
-  <span>
-  (no title)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/07/19/java/"  title="">
+<a href="/2017/07/20/数据库三大范式/"  title="">
  <strong>下一篇：</strong><br/> 
  <span>(no title)
 </span>
@@ -177,7 +160,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一范式"><span class="toc-number">1.</span> <span class="toc-text">第一范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二范式"><span class="toc-number">2.</span> <span class="toc-text">第二范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三范式"><span class="toc-number">3.</span> <span class="toc-text">第三范式</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-查看表占用"><span class="toc-number">1.</span> <span class="toc-text">mysql 查看表占用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看慢查询"><span class="toc-number">1.1.</span> <span class="toc-text">查看慢查询</span></a></li></ol></li></ol>
  
   </div>
 
