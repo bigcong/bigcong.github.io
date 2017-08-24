@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hexo</title>
+    <title>java代码 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="bigcong">
     
 
     
-    <meta name="description" content="第一范式 每一列属性都是不可再分的属性，确保每一个列的原子性 两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据  第二范式 每一行数据只能和其中一列相关，即一列只做一件事情  第三范式 数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系">
+    <meta name="description" content="优雅读取文件12List&amp;lt;String&amp;gt; lines = Files.readAllLines(Paths.get(&amp;quot;/Users/cong/3.txt&amp;quot;), StandardCharsets               .UTF_8); list to Map (java 8)1Map&amp;lt;String, String&amp;gt; collect = caBank">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2017/07/20/数据库三大范式/index.html">
+<meta property="og:title" content="java代码">
+<meta property="og:url" content="http://yoursite.com/2017/08/24/java/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第一范式 每一列属性都是不可再分的属性，确保每一个列的原子性 两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据  第二范式 每一行数据只能和其中一列相关，即一列只做一件事情  第三范式 数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系">
-<meta property="og:updated_time" content="2017-07-20T06:38:56.000Z">
+<meta property="og:description" content="优雅读取文件12List&amp;lt;String&amp;gt; lines = Files.readAllLines(Paths.get(&amp;quot;/Users/cong/3.txt&amp;quot;), StandardCharsets               .UTF_8); list to Map (java 8)1Map&amp;lt;String, String&amp;gt; collect = caBank">
+<meta property="og:updated_time" content="2017-08-24T08:48:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="第一范式 每一列属性都是不可再分的属性，确保每一个列的原子性 两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据  第二范式 每一行数据只能和其中一列相关，即一列只做一件事情  第三范式 数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系">
+<meta name="twitter:title" content="java代码">
+<meta name="twitter:description" content="优雅读取文件12List&amp;lt;String&amp;gt; lines = Files.readAllLines(Paths.get(&amp;quot;/Users/cong/3.txt&amp;quot;), StandardCharsets               .UTF_8); list to Map (java 8)1Map&amp;lt;String, String&amp;gt; collect = caBank">
 
     
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -79,14 +79,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/07/20/数据库三大范式/" title="" itemprop="url"></a>
+      <a href="/2017/08/24/java/" title="java代码" itemprop="url">java代码</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
 		
   <p class="article-time">
-    <time datetime="2017-07-20T06:28:02.000Z" itemprop="datePublished"> 发表于 2017-07-20</time>
+    <time datetime="2017-08-24T08:48:37.000Z" itemprop="datePublished"> 发表于 2017-08-24</time>
     
   </p>
 </header>
@@ -95,21 +95,13 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一范式"><span class="toc-number">1.</span> <span class="toc-text">第一范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二范式"><span class="toc-number">2.</span> <span class="toc-text">第二范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三范式"><span class="toc-number">3.</span> <span class="toc-text">第三范式</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#优雅读取文件"><span class="toc-number">1.</span> <span class="toc-text">优雅读取文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list-to-Map-java-8"><span class="toc-number">2.</span> <span class="toc-text">list to Map (java 8)</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h3><ol>
-<li>每一列属性都是不可再分的属性，确保每一个列的原子性</li>
-<li>两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据</li>
-</ol>
-<h3 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h3><ol>
-<li>每一行数据只能和其中一列相关，即一列只做一件事情</li>
-</ol>
-<h3 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h3><ol>
-<li>数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系</li>
-</ol>
-  
+		<hr>
+<h3 id="优雅读取文件"><a href="#优雅读取文件" class="headerlink" title="优雅读取文件"></a>优雅读取文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; lines = Files.readAllLines(Paths.get(&quot;/Users/cong/3.txt&quot;), StandardCharsets</div><div class="line">               .UTF_8);</div></pre></td></tr></table></figure>
+<h3 id="list-to-Map-java-8"><a href="#list-to-Map-java-8" class="headerlink" title="list to Map (java 8)"></a>list to Map (java 8)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Map&lt;String, String&gt; collect = caBankTypeService.listCaBankType(new CaBankType()).stream().collect(Collectors.toMap(CaBankType::getBankUuid, CaBankType::getBankCenterName));</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -121,7 +113,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/07/20/数据库三大范式/" data-title="Hexo" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/08/24/java/" data-title="java代码 | Hexo" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -135,18 +127,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/07/27/mysql命令 /" title="">
+ <a href="/2017/08/24/数据库三大范式/" title="mysql范式">
   <strong>上一篇：</strong><br/>
   <span>
-  (no title)</span>
+  mysql范式</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/07/19/java/"  title="">
+<a href="/2017/08/24/mysql命令 /"  title="mysql命令">
  <strong>下一篇：</strong><br/> 
- <span>(no title)
+ <span>mysql命令
 </span>
 </a>
 </div>
@@ -177,7 +169,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一范式"><span class="toc-number">1.</span> <span class="toc-text">第一范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二范式"><span class="toc-number">2.</span> <span class="toc-text">第二范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三范式"><span class="toc-number">3.</span> <span class="toc-text">第三范式</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#优雅读取文件"><span class="toc-number">1.</span> <span class="toc-text">优雅读取文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list-to-Map-java-8"><span class="toc-number">2.</span> <span class="toc-text">list to Map (java 8)</span></a></li></ol>
  
   </div>
 
@@ -199,6 +191,14 @@
 <div class="categorieslist">
 	<p class="asidetitle">分类</p>
 		<ul>
+		
+		  
+			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mysql/" title="mysql">mysql<sup>3</sup></a></li>
+		  
 		
 		  
 			<li><a href="/categories/命令/" title="命令">命令<sup>2</sup></a></li>
@@ -230,11 +230,15 @@
 			
 		
 			
+				<li><a href="/tags/命令/" title="命令">命令<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/教程/" title="教程">教程<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/运维/" title="运维">运维<sup>1</sup></a></li>
+				<li><a href="/tags/加班夜/" title="加班夜">加班夜<sup>1</sup></a></li>
 			
 		
 			
@@ -242,15 +246,11 @@
 			
 		
 			
-				<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/redis/" title="redis">redis<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+				<li><a href="/tags/运维/" title="运维">运维<sup>1</sup></a></li>
 			
 		
 			
@@ -262,7 +262,7 @@
 			
 		
 			
-				<li><a href="/tags/加班夜/" title="加班夜">加班夜<sup>1</sup></a></li>
+				<li><a href="/tags/知识/" title="知识">知识<sup>1</sup></a></li>
 			
 		
 			
@@ -271,6 +271,16 @@
 		
 			
 				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/配置文件/" title="配置文件">配置文件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mysql总结/" title="mysql总结">mysql总结<sup>1</sup></a></li>
+			
+		
 			
 		
 		</ul>

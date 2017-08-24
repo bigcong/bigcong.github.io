@@ -77,6 +77,72 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/05/04/zongjie/" title=" 总结" itemprop="url"> 总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-04T02:02:00.000Z" itemprop="datePublished"> 发表于 2017-05-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="tensorflow的基本类型"><a href="#tensorflow的基本类型" class="headerlink" title="tensorflow的基本类型"></a>tensorflow的基本类型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Variable  计算图谱中的变量</div><div class="line">Constant  常量</div><div class="line">Placeholder  预先的变量，类似于占位符，暂时变量？</div></pre></td></tr></table></figure>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d -g     hexo 编译发布</div></pre></td></tr></table></figure>
+<h3 id="gradle-仓库加速"><a href="#gradle-仓库加速" class="headerlink" title="gradle 仓库加速"></a>gradle 仓库加速</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">maven&#123;url&apos;http://maven.aliyun.com/nexus/content/groups/public&apos;&#125;</div></pre></td></tr></table></figure>
+<h3 id="连接redis远程服务器"><a href="#连接redis远程服务器" class="headerlink" title="连接redis远程服务器"></a>连接redis远程服务器</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis-cli -h 123.57.220.83 -p 6379 auth iGn7mIJZYW2rdzJqT</div></pre></td></tr></table></figure>
+<h3 id="pptp-VPN-创建连接"><a href="#pptp-VPN-创建连接" class="headerlink" title="pptp VPN 创建连接"></a>pptp VPN 创建连接</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pptpsetup --create pptpd  --server x.x.x.x  --username 11111  --password  00000  --encrypt --start</div></pre></td></tr></table></figure>
+<h3 id="保留两位小数四舍五入"><a href="#保留两位小数四舍五入" class="headerlink" title="保留两位小数四舍五入"></a>保留两位小数四舍五入</h3><p>　  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">double   f   =   111231.5585;  </div><div class="line">BigDecimal   b   =   new   BigDecimal(f);  </div><div class="line">double   f1   =   b.setScale(2,   BigDecimal.ROUND_HALF_UP).doubleValue();</div></pre></td></tr></table></figure></p>
+<h3 id="java-8-分区"><a href="#java-8-分区" class="headerlink" title="java 8 分区"></a>java 8 分区</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Map&lt;Boolean, List&lt;CaCustomerCard&gt;&gt; collect = caCustomerCards.stream().collect(Collectors.partitioningBy(t -&gt; t.getId() == cardId));</div></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/总结/">总结</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/教程/">教程</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/05/03/雨奔/" title="雨奔" itemprop="url">雨奔</a>
   </h1>
   <p class="article-author">By
@@ -458,70 +524,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/04/14/hello-world/" title=" 树莓派一些总结" itemprop="url"> 树莓派一些总结</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
-		
-  <p class="article-time">
-    <time datetime="2017-04-14T09:13:00.000Z" itemprop="datePublished"> 发表于 2017-04-14</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="Mac-下将img-烧录到-内存卡中"><a href="#Mac-下将img-烧录到-内存卡中" class="headerlink" title="Mac 下将img 烧录到 内存卡中"></a>Mac 下将img 烧录到 内存卡中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dd <span class="keyword">if</span>=2016-03-18-raspbian-jessie-lite.img of=/dev/rdisk2 bs=32m</div></pre></td></tr></table></figure>
-<h3 id="更换树莓派源"><a href="#更换树莓派源" class="headerlink" title="更换树莓派源"></a>更换树莓派源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vim /etc/apt/sources.list</div><div class="line">注释官方源之后，加入下面这些</div><div class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ wheezy main contrib non-free rpi </div><div class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ wheezy main contrib non-free rpi </div><div class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib</div><div class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib</div></pre></td></tr></table></figure>
-<h3 id="安装ZSH"><a href="#安装ZSH" class="headerlink" title="安装ZSH"></a>安装ZSH</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install zsh</div><div class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></div></pre></td></tr></table></figure>
-<h3 id="启用root"><a href="#启用root" class="headerlink" title="启用root"></a>启用root</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo passwd root</div><div class="line">vim /etc/ssh/sshd_config</div><div class="line">把这行修改为“PermitRootLogin yes</div></pre></td></tr></table></figure>
-<h3 id="ssh-无密码登录"><a href="#ssh-无密码登录" class="headerlink" title="ssh 无密码登录"></a>ssh 无密码登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa </div><div class="line">vim .ssh/authorized_keys</div><div class="line">chmod 600 .ssh/authorized_keys</div><div class="line">chmod 700 -R .ssh</div></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/总结/">总结</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/教程/">教程</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
@@ -548,6 +550,14 @@
 <div class="categorieslist">
 	<p class="asidetitle">分类</p>
 		<ul>
+		
+		  
+			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mysql/" title="mysql">mysql<sup>3</sup></a></li>
+		  
 		
 		  
 			<li><a href="/categories/命令/" title="命令">命令<sup>2</sup></a></li>
@@ -579,11 +589,15 @@
 			
 		
 			
+				<li><a href="/tags/命令/" title="命令">命令<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/教程/" title="教程">教程<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/运维/" title="运维">运维<sup>1</sup></a></li>
+				<li><a href="/tags/加班夜/" title="加班夜">加班夜<sup>1</sup></a></li>
 			
 		
 			
@@ -591,15 +605,11 @@
 			
 		
 			
-				<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/redis/" title="redis">redis<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+				<li><a href="/tags/运维/" title="运维">运维<sup>1</sup></a></li>
 			
 		
 			
@@ -611,7 +621,7 @@
 			
 		
 			
-				<li><a href="/tags/加班夜/" title="加班夜">加班夜<sup>1</sup></a></li>
+				<li><a href="/tags/知识/" title="知识">知识<sup>1</sup></a></li>
 			
 		
 			
@@ -620,6 +630,16 @@
 		
 			
 				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/配置文件/" title="配置文件">配置文件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mysql总结/" title="mysql总结">mysql总结<sup>1</sup></a></li>
+			
+		
 			
 		
 		</ul>

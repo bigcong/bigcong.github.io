@@ -77,6 +77,70 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/04/14/hello-world/" title=" 树莓派一些总结" itemprop="url"> 树莓派一些总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="bigcong" target="_blank" itemprop="author">bigcong</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-14T09:13:00.000Z" itemprop="datePublished"> 发表于 2017-04-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="Mac-下将img-烧录到-内存卡中"><a href="#Mac-下将img-烧录到-内存卡中" class="headerlink" title="Mac 下将img 烧录到 内存卡中"></a>Mac 下将img 烧录到 内存卡中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dd <span class="keyword">if</span>=2016-03-18-raspbian-jessie-lite.img of=/dev/rdisk2 bs=32m</div></pre></td></tr></table></figure>
+<h3 id="更换树莓派源"><a href="#更换树莓派源" class="headerlink" title="更换树莓派源"></a>更换树莓派源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vim /etc/apt/sources.list</div><div class="line">注释官方源之后，加入下面这些</div><div class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ wheezy main contrib non-free rpi </div><div class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ wheezy main contrib non-free rpi </div><div class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib</div><div class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib</div></pre></td></tr></table></figure>
+<h3 id="安装ZSH"><a href="#安装ZSH" class="headerlink" title="安装ZSH"></a>安装ZSH</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install zsh</div><div class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></div></pre></td></tr></table></figure>
+<h3 id="启用root"><a href="#启用root" class="headerlink" title="启用root"></a>启用root</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo passwd root</div><div class="line">vim /etc/ssh/sshd_config</div><div class="line">把这行修改为“PermitRootLogin yes</div></pre></td></tr></table></figure>
+<h3 id="ssh-无密码登录"><a href="#ssh-无密码登录" class="headerlink" title="ssh 无密码登录"></a>ssh 无密码登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa </div><div class="line">vim .ssh/authorized_keys</div><div class="line">chmod 600 .ssh/authorized_keys</div><div class="line">chmod 700 -R .ssh</div></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/总结/">总结</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/教程/">教程</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/01/14/无题/" title="无题" itemprop="url">无题</a>
   </h1>
   <p class="article-author">By
@@ -166,6 +230,14 @@
 		<ul>
 		
 		  
+			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/mysql/" title="mysql">mysql<sup>3</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/命令/" title="命令">命令<sup>2</sup></a></li>
 		  
 		
@@ -195,11 +267,15 @@
 			
 		
 			
+				<li><a href="/tags/命令/" title="命令">命令<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/教程/" title="教程">教程<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/运维/" title="运维">运维<sup>1</sup></a></li>
+				<li><a href="/tags/加班夜/" title="加班夜">加班夜<sup>1</sup></a></li>
 			
 		
 			
@@ -207,15 +283,11 @@
 			
 		
 			
-				<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/redis/" title="redis">redis<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+				<li><a href="/tags/运维/" title="运维">运维<sup>1</sup></a></li>
 			
 		
 			
@@ -227,7 +299,7 @@
 			
 		
 			
-				<li><a href="/tags/加班夜/" title="加班夜">加班夜<sup>1</sup></a></li>
+				<li><a href="/tags/知识/" title="知识">知识<sup>1</sup></a></li>
 			
 		
 			
@@ -236,6 +308,16 @@
 		
 			
 				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/配置文件/" title="配置文件">配置文件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mysql总结/" title="mysql总结">mysql总结<sup>1</sup></a></li>
+			
+		
 			
 		
 		</ul>
