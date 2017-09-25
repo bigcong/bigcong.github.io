@@ -222,6 +222,41 @@
         <hr>
 <h3 id="优雅读取文件"><a href="#优雅读取文件" class="headerlink" title="优雅读取文件"></a>优雅读取文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; lines = Files.readAllLines(Paths.get(&quot;/Users/cong/3.txt&quot;), StandardCharsets</div><div class="line">               .UTF_8);</div></pre></td></tr></table></figure>
 <h3 id="list-to-Map-java-8"><a href="#list-to-Map-java-8" class="headerlink" title="list to Map (java 8)"></a>list to Map (java 8)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Map&lt;String, String&gt; collect = caBankTypeService.listCaBankType(new CaBankType()).stream().collect(Collectors.toMap(CaBankType::getBankUuid, CaBankType::getBankCenterName));</div></pre></td></tr></table></figure>
+<h3 id="mybatis在xml文件中处理大于号小于号的方法"><a href="#mybatis在xml文件中处理大于号小于号的方法" class="headerlink" title="mybatis在xml文件中处理大于号小于号的方法"></a>mybatis在xml文件中处理大于号小于号的方法</h3><table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th style="text-align:center">字符</th>
+<th style="text-align:right">中文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;gt;</code></td>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:right">大于号</td>
+</tr>
+<tr>
+<td><code>&amp;lt;</code></td>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:right">小于号</td>
+</tr>
+<tr>
+<td><code>&amp;apos;</code></td>
+<td style="text-align:center">’</td>
+<td style="text-align:right">单引号</td>
+</tr>
+<tr>
+<td><code>&amp;quot;</code></td>
+<td style="text-align:center">“</td>
+<td style="text-align:right">双引号</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;![CDATA[ when min(starttime)&lt;=&apos;12:00&apos; and max(endtime)&lt;=&apos;12:00&apos; ]]&gt;</div></pre></td></tr></table></figure>
+<h3 id="分组-计数"><a href="#分组-计数" class="headerlink" title="分组, 计数"></a>分组, 计数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Map&lt;string long&gt; result =  </div><div class="line">        items.stream().collect(  </div><div class="line">                Collectors.groupingBy(  </div><div class="line">                        Function.identity(), Collectors.counting()  </div><div class="line">                )  </div><div class="line">        );</div></pre></td></tr></table></figure>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">int arr[] = &#123;1, 4, 2, 8, 5&#125;;</div><div class="line">     Arrays.parallelSort(arr);</div><div class="line">     for(int i : arr)&#123;</div><div class="line">         System.out.print(i + &quot; &quot;);</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+
         
         
         <p class="article-more-link">
@@ -274,6 +309,10 @@
 <h2 id="mysql-查看表占用"><a href="#mysql-查看表占用" class="headerlink" title="mysql 查看表占用"></a>mysql 查看表占用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select table_name,data_length from information_schema.tables;</div></pre></td></tr></table></figure>
 <h3 id="查看慢查询"><a href="#查看慢查询" class="headerlink" title="查看慢查询"></a>查看慢查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show full processlist;</div></pre></td></tr></table></figure>
 <h3 id="开启远端权限"><a href="#开启远端权限" class="headerlink" title="开启远端权限"></a>开启远端权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos;IDENTIFIED BY &apos;&apos; WITH GRANT OPTION;</div></pre></td></tr></table></figure>
+<h3 id="定时备份sql，那么可在-etc-crontab配置文件中加入下面代码行："><a href="#定时备份sql，那么可在-etc-crontab配置文件中加入下面代码行：" class="headerlink" title="定时备份sql，那么可在/etc/crontab配置文件中加入下面代码行："></a>定时备份sql，那么可在/etc/crontab配置文件中加入下面代码行：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">30 1 * * * root mysqldump -u root -pPASSWORD --all-databases | gzip &gt; /mnt/disk2/database_`date &apos;+%m-%d-%Y&apos;`.sql.gz</div></pre></td></tr></table></figure>
+<h2 id="mysql命令"><a href="#mysql命令" class="headerlink" title="mysql命令"></a>mysql命令</h2><h3 id="mysql将结果导出文件"><a href="#mysql将结果导出文件" class="headerlink" title="mysql将结果导出文件"></a>mysql将结果导出文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -h 172.1.0.1  -uroot -pcc  --default-character-set=utf8 jeeplus_schema -e &quot;select count(*),uname,phone from user group by uname  having count(*)&gt;1;&quot; &gt; /tmp/repeat.txt</div></pre></td></tr></table></figure>
+<h3 id="mysql-关联表一起更新"><a href="#mysql-关联表一起更新" class="headerlink" title="mysql 关联表一起更新"></a>mysql 关联表一起更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">UPDATE user_points p,</div><div class="line"> (</div><div class="line">	SELECT</div><div class="line">		uuid,</div><div class="line">		sum(number) outnumber</div><div class="line">	FROM</div><div class="line">		user_itl_consume</div><div class="line">	GROUP BY</div><div class="line">		uuid</div><div class="line">) outcome,</div><div class="line"> (</div><div class="line">	SELECT</div><div class="line">		uuid,</div><div class="line">		sum(number) innumber</div><div class="line">	FROM</div><div class="line">		user_itl_income</div><div class="line">	GROUP BY</div><div class="line">		uuid</div><div class="line">) income</div><div class="line">SET p.point = (</div><div class="line">	income.innumber - outcome.outnumber</div><div class="line">)</div><div class="line">WHERE</div><div class="line">	p.uuid = income.uuid</div><div class="line">AND p.uuid = outcome.uuid</div><div class="line">AND income.innumber - outcome.outnumber != p.point;</div></pre></td></tr></table></figure>
+
         
         
         <p class="article-more-link">

@@ -278,6 +278,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="_">-f</span></div></pre></td></tr></table></figure>
 <h3 id="git-查看远程分支"><a href="#git-查看远程分支" class="headerlink" title="git 查看远程分支"></a>git 查看远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
 <h3 id="git-拉取远程分支并创建本地分支"><a href="#git-拉取远程分支并创建本地分支" class="headerlink" title="git 拉取远程分支并创建本地分支"></a>git 拉取远程分支并创建本地分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b develop  remotes/origin/develop</div></pre></td></tr></table></figure>
+<h2 id="git-命令-1"><a href="#git-命令-1" class="headerlink" title="git 命令"></a>git 命令</h2><h3 id="git-回退某个版本-1"><a href="#git-回退某个版本-1" class="headerlink" title="git 回退某个版本"></a>git 回退某个版本</h3><p>有时候我们会要会退某一个版本,我们首先要找到我们要回退的版本号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log</div></pre></td></tr></table></figure>
+<p>然后我们找到要回退的版本号的，将本地分支reset需要回退的分支版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard   a0dd99<span class="built_in">cd</span>7a00ac95d3e0a54d4b0a1a51db41d498</div></pre></td></tr></table></figure>
+<p>这时候我们如果git push，那么会一定会出现错误，所以需要用加上-f</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="_">-f</span></div></pre></td></tr></table></figure>
+<h3 id="git-查看远程分支-1"><a href="#git-查看远程分支-1" class="headerlink" title="git 查看远程分支"></a>git 查看远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
+<h3 id="git-拉取远程分支并创建本地分支-1"><a href="#git-拉取远程分支并创建本地分支-1" class="headerlink" title="git 拉取远程分支并创建本地分支"></a>git 拉取远程分支并创建本地分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b develop  remotes/origin/develop</div></pre></td></tr></table></figure>
 
         
         
