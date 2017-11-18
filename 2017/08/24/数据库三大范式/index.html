@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="第一范式 每一列属性都是不可再分的属性，确保每一个列的原子性 两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据  第二范式 每一行数据只能和其中一列相关，即一列只做一件事情  第三范式 数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系">
+    <meta name="description" content="数据库设计三大范式###第一范式 ####无重复的列 每一列属性都是不可再分的属性，确保每一个列的原子性两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据 就比如说，我们的user表设计，当中1select is_auth,is_auth_primary,is_auth_senior,is_auth_video,auth_level from user; 这几个字段，都可以用只">
 <meta name="keywords" content="知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql范式">
 <meta property="og:url" content="http://yoursite.com/2017/08/24/数据库三大范式/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第一范式 每一列属性都是不可再分的属性，确保每一个列的原子性 两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据  第二范式 每一行数据只能和其中一列相关，即一列只做一件事情  第三范式 数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系">
-<meta property="og:updated_time" content="2017-08-24T08:54:57.000Z">
+<meta property="og:description" content="数据库设计三大范式###第一范式 ####无重复的列 每一列属性都是不可再分的属性，确保每一个列的原子性两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据 就比如说，我们的user表设计，当中1select is_auth,is_auth_primary,is_auth_senior,is_auth_video,auth_level from user; 这几个字段，都可以用只">
+<meta property="og:updated_time" content="2017-11-18T09:33:36.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql范式">
-<meta name="twitter:description" content="第一范式 每一列属性都是不可再分的属性，确保每一个列的原子性 两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据  第二范式 每一行数据只能和其中一列相关，即一列只做一件事情  第三范式 数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系">
+<meta name="twitter:description" content="数据库设计三大范式###第一范式 ####无重复的列 每一列属性都是不可再分的属性，确保每一个列的原子性两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据 就比如说，我们的user表设计，当中1select is_auth,is_auth_primary,is_auth_senior,is_auth_video,auth_level from user; 这几个字段，都可以用只">
 
     
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -96,21 +96,192 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一范式"><span class="toc-number">1.</span> <span class="toc-text">第一范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二范式"><span class="toc-number">2.</span> <span class="toc-text">第二范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三范式"><span class="toc-number">3.</span> <span class="toc-text">第三范式</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库设计三大范式"><span class="toc-number">1.</span> <span class="toc-text">数据库设计三大范式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第二范式"><span class="toc-number">1.1.</span> <span class="toc-text">第二范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三范式"><span class="toc-number">1.2.</span> <span class="toc-text">第三范式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性不能传递依赖于主属性"><span class="toc-number">1.2.1.</span> <span class="toc-text">属性不能传递依赖于主属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些字段总结"><span class="toc-number">2.</span> <span class="toc-text">一些字段总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DATETIME-和TIMESAMP-的区别"><span class="toc-number">2.0.1.</span> <span class="toc-text">DATETIME 和TIMESAMP 的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DECIMAL"><span class="toc-number">2.1.</span> <span class="toc-text">DECIMAL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VARCHAR-和CHAR"><span class="toc-number">2.2.</span> <span class="toc-text">VARCHAR 和CHAR</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VARCHAR"><span class="toc-number">2.2.1.</span> <span class="toc-text">VARCHAR</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CHAR"><span class="toc-number">2.2.2.</span> <span class="toc-text">CHAR</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLOB和TEXT类型"><span class="toc-number">2.3.</span> <span class="toc-text">BLOB和TEXT类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用枚举-ENUM-代替字符串类型"><span class="toc-number">2.4.</span> <span class="toc-text">使用枚举(ENUM)代替字符串类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON-类型"><span class="toc-number">2.5.</span> <span class="toc-text">JSON 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查询"><span class="toc-number">2.5.1.</span> <span class="toc-text">查询</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-Explain详解"><span class="toc-number">3.</span> <span class="toc-text">MySQL Explain详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ID"><span class="toc-number">3.0.1.</span> <span class="toc-text">ID</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#select-type"><span class="toc-number">3.0.2.</span> <span class="toc-text">select_type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#table"><span class="toc-number">3.0.3.</span> <span class="toc-text">table</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#type"><span class="toc-number">3.0.4.</span> <span class="toc-text">type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#possible-keys"><span class="toc-number">3.0.5.</span> <span class="toc-text">possible_keys</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#key"><span class="toc-number">3.0.6.</span> <span class="toc-text">key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#key-len"><span class="toc-number">3.0.7.</span> <span class="toc-text">key_len</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ref"><span class="toc-number">3.0.8.</span> <span class="toc-text">ref</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rows"><span class="toc-number">3.0.9.</span> <span class="toc-text">rows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Extra"><span class="toc-number">3.0.10.</span> <span class="toc-text">Extra</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql中的Btree与Hash索引"><span class="toc-number">4.</span> <span class="toc-text">Mysql中的Btree与Hash索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Tree-索引特征"><span class="toc-number">4.1.</span> <span class="toc-text">B-Tree 索引特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hash索引"><span class="toc-number">4.2.</span> <span class="toc-text">Hash索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-引擎"><span class="toc-number">5.</span> <span class="toc-text">mysql 引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我自己的总结"><span class="toc-number">6.</span> <span class="toc-text">我自己的总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql连表更新"><span class="toc-number">6.1.</span> <span class="toc-text">mysql连表更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#统计时候，cash-when"><span class="toc-number">6.2.</span> <span class="toc-text">统计时候，cash when</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启远端权限"><span class="toc-number">6.3.</span> <span class="toc-text">开启远端权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql将结果导出文件或者excel"><span class="toc-number">6.4.</span> <span class="toc-text">mysql将结果导出文件或者excel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-查看表占用"><span class="toc-number">6.5.</span> <span class="toc-text">mysql 查看表占用</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<hr>
-<h3 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h3><ol>
-<li>每一列属性都是不可再分的属性，确保每一个列的原子性</li>
-<li>两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据</li>
+		<h2 id="数据库设计三大范式"><a href="#数据库设计三大范式" class="headerlink" title="数据库设计三大范式"></a>数据库设计三大范式</h2><p>###第一范式</p>
+<p>####无重复的列</p>
+<p>每一列属性都是不可再分的属性，确保每一个列的原子性<br>两列的属性相近或者相似一样，尽量合并属性一样的列，确保不产生冗余的数据</p>
+<p>就比如说，我们的user表设计，当中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select is_auth,is_auth_primary,is_auth_senior,is_auth_video,auth_level from user;</div></pre></td></tr></table></figure></p>
+<p>这几个字段，都可以用只用auth_level，状态来表示</p>
+<h3 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h3><p>####属性完全依赖于主键<br>任意一个字段都只依赖表中的同一个字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">学生证 名称	学生证号	学生证办理时间	借书证名称	借书证号	借书证办理时间</div></pre></td></tr></table></figure>
+<p>改成2张表如下 学生证表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">学生证	学生证号	学生证办理时间</div></pre></td></tr></table></figure>
+<p>借书证表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">借书证	借书证号	借书证把你拉时间</div></pre></td></tr></table></figure>
+<h3 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h3><h4 id="属性不能传递依赖于主属性"><a href="#属性不能传递依赖于主属性" class="headerlink" title="属性不能传递依赖于主属性"></a>属性不能传递依赖于主属性</h4><p>如果某一属性依赖于其他非主键属性，而其他非主键属性又依赖于主键，那么这个属性就是间接依赖于主键</p>
+<p>学号, 姓名, 年龄, 所在学院, 学院联系电话，关键字为单一关键字”学号”;<br>存在依赖传递: (学号) → (所在学院) → (学院地点, 学院电话) </p>
+<h2 id="一些字段总结"><a href="#一些字段总结" class="headerlink" title="一些字段总结"></a>一些字段总结</h2><h4 id="DATETIME-和TIMESAMP-的区别"><a href="#DATETIME-和TIMESAMP-的区别" class="headerlink" title="DATETIME 和TIMESAMP 的区别"></a>DATETIME 和TIMESAMP 的区别</h4><p>dateTime和timesamp列可以存储相同类型的数据：时间日期，精确到秒，然而timestamp只试用datetime一半的存储空间，并且会根据时区的变化，具有特殊更新能力，timestamp允许的范围比较小（ 1970-01-01 00:00:00 到 2037-12-31 23:59:59 ）（所以我们用记录创建时间和更新时间一般使用TIMESAMP，其他就用DATETIME）</p>
+<h3 id="DECIMAL"><a href="#DECIMAL" class="headerlink" title="DECIMAL"></a>DECIMAL</h3><p>因为CPU不支持DECIMAL的直接计算。对于DECIMAL列，可以指定小数点前后所允许的最大位数，这也会消耗更多的空间消耗。高版本的mysql会将DECIMAL打包存在一个二进制的字符串中，一种9个字节，小数点后用4个字节，小数点前用4个字节，小数点占一个字节。高版本mysql自身实现了高精度计算。相对而言，cpu直接支持浮点型计算，运行时间更快</p>
+<h3 id="VARCHAR-和CHAR"><a href="#VARCHAR-和CHAR" class="headerlink" title="VARCHAR 和CHAR"></a>VARCHAR 和CHAR</h3><h4 id="VARCHAR"><a href="#VARCHAR" class="headerlink" title="VARCHAR"></a>VARCHAR</h4><p>用于存储定可变的字符串，比定长类型更节省空间，varchar占用空间与存储的内容有关，需要使用1或2个额外字节记录字符串的长度，如果列的最大长度小于255，则使用1个字节，否则就需要2个字节，所以（字符串的最大长度比平均长度大很多）<br>varchar适合：字符串的最大长度比平均长度大很多</p>
+<h4 id="CHAR"><a href="#CHAR" class="headerlink" title="CHAR"></a>CHAR</h4><p>char类型是定长的,适合存储很短的字符串，或者所有的都接近同一个长度。例如，char非常适合存储Md5值<br>定长的char类型不容易产生碎片，对于非常短的列，char比varchar在存储空间上也更有效率。char(1)只需要一个字节，而varchar(1)却需要两个字节，因为还有一个记录长度的额外字节</p>
+<h3 id="BLOB和TEXT类型"><a href="#BLOB和TEXT类型" class="headerlink" title="BLOB和TEXT类型"></a>BLOB和TEXT类型</h3><p>BlOB类型存储的是二进制数据，没有排序规则或者字符集，而TEXT类型有字符集和排序规则<br>它只对每一个列的最前max_sort_length， 字节而不是整个字符串做排序。<br>不能将BLOB和TEXT列全部长度进行索引，也不能使用这些索引消除排序<br>使用枚举(ENUM)代替字符串类型<br>实际存储为整数，而不是字符串</p>
+<h3 id="使用枚举-ENUM-代替字符串类型"><a href="#使用枚举-ENUM-代替字符串类型" class="headerlink" title="使用枚举(ENUM)代替字符串类型"></a>使用枚举(ENUM)代替字符串类型</h3><p>select e+0 form eum_test; </p>
+<h3 id="JSON-类型"><a href="#JSON-类型" class="headerlink" title="JSON 类型"></a>JSON 类型</h3><h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from json_test where person_desc -&gt; &apos;$.genre&apos;=&apos;3&apos;;</div></pre></td></tr></table></figure>
+<h2 id="MySQL-Explain详解"><a href="#MySQL-Explain详解" class="headerlink" title="MySQL Explain详解"></a>MySQL Explain详解</h2><h4 id="ID"><a href="#ID" class="headerlink" title="ID"></a>ID</h4><p>可以理解成sql的执行的标志，sql从大到小的执行</p>
+<ol>
+<li>ID相同，执行顺序从上到下</li>
+<li>如果是子查询，id的序号就会递增，id值越大优先级就越高，越先越被执行</li>
+<li>如果id值相同，说明是一组，从上往下执行</li>
 </ol>
-<h3 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h3><ol>
-<li>每一行数据只能和其中一列相关，即一列只做一件事情</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select *,(select uuid from user limit 1)  from tr_order where customer_uuid in (select uuid from user);</div></pre></td></tr></table></figure>
+<h4 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h4><p>查询类型</p>
+<ul>
+<li>SIMPLE</li>
+</ul>
+<p>简单select,不使用union和子查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select * from user</div></pre></td></tr></table></figure></p>
+<ul>
+<li>PRIMARY</li>
+</ul>
+<p>查询中如果包含临时表，那么外面的select被标记为PRIMARY</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain  select *  from (select *  from user ) a  limit 1;</div></pre></td></tr></table></figure>
+<ul>
+<li>UNION </li>
+</ul>
+<p>UNION的第二个或者select语句被标记UNION</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select uid from user union all select customer_uuid   from ct_customer_account_ctb ;</div></pre></td></tr></table></figure>
+<ul>
+<li>DEPENDENT UNION</li>
+</ul>
+<p>UNION中的第二个或后面的SELECT语句，取决于外面的查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select * from user where uid in (select uid from user union all select customer_uuid   from ct_customer_account_ctb);</div></pre></td></tr></table></figure>
+<ul>
+<li>UNION RESULT</li>
+</ul>
+<p>UNION的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select uid from user union all select customer_uuid   from ct_customer_account_ctb</div></pre></td></tr></table></figure>
+<ul>
+<li>SUBQUERY<br>子查询中的第一个SELECT.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain  select * from user where  uid =(select uid from user limit 1);</div></pre></td></tr></table></figure>
+<ul>
+<li>DEPENDENT SUBQUERY</li>
+</ul>
+<p>子查询中的第一个SELECT，取决于外面的查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select * from user where uid in (select uid from user union all select customer_uuid   from ct_customer_account_ctb);</div></pre></td></tr></table></figure>
+<ul>
+<li>DERIVED(派生)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select uid from (select * from user) a;</div></pre></td></tr></table></figure>
+<h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><p>显示这个一行数据是关于哪张表的，<br>有时不是真实的表名字,看到的是derivedx(x是个数字)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select uid from (select * from (select * from user )b ) a;</div></pre></td></tr></table></figure>
+<h4 id="type"><a href="#type" class="headerlink" title="type"></a>type</h4><p>显示连接使用了什么类别<br>system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL<br>(一般来说，得保证查询至少达到range级别，最好能达到ref)</p>
+<ul>
+<li>system (表只满足一行条件)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select * from (select * from user where uid=10001) a;</div></pre></td></tr></table></figure>
+<ul>
+<li>const<br>表最多有一个匹配行，它将在查询开始时被读取</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select * from user where uid=10001;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>eq_ref</p>
+<p>对于每个来自于前面的表的行组合，从该表中读取一行。这可能是最好的联接类型，除了const类型。它用在一个索引的所有部分被联接使用并且索引是UNIQUE或PRIMARY KEY。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select * from user u , ca_customer_account cb   where cb.customer_uuid=u.uuid ;</div></pre></td></tr></table></figure>
+<ul>
+<li>ref</li>
+</ul>
+<p>对于每个来自于前面的表的行组合，所有有匹配索引值的行将从这张表中读取,ref可以用于使用=或&lt;=&gt;操作符的带索引的列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">explain select * from user u , ct_customer_account_ctb cb   where cb.customer_uuid=u.uuid ;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>ref_or_null</code></li>
+</ul>
+<p>该联接类型如同ref，但是添加了MySQL可以专门搜索包含NULL值的行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select user_type from user where user_type=0 or user_type is  null;</div></pre></td></tr></table></figure>
+<ul>
+<li>index_merge</li>
+</ul>
+<p>该联接类型表示使用了索引合并优化方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select * from t4 where id=3952602 or accountid=31754306 ;</div></pre></td></tr></table></figure>
+<ul>
+<li>unique_subquery</li>
+</ul>
+<p>该类型替换了下面形式的IN子查询的ref：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">value IN (SELECT primary_key FROM single_table WHERE some_expr)</div><div class="line">unique_subquery是一个索引查找函数，可以完全替换子查询，效率更高。</div></pre></td></tr></table></figure>
+<ul>
+<li>index_subquery</li>
+</ul>
+<p>该联接类型类似于unique_subquery。可以替换IN子查询，但只适合下列形式的子查询中的非唯一索引：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">value IN (SELECT key_column FROM single_table WHERE some_expr)</div></pre></td></tr></table></figure>
+<ul>
+<li>range </li>
+</ul>
+<p>只检索给定范围的行，使用一个索引来选择行。key列显示使用了哪个索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explain select * from user where uid =10035 or uid=10036;</div></pre></td></tr></table></figure>
+<ul>
+<li>index </li>
+</ul>
+<p>该联接类型与ALL相同，除了只有索引树被扫描。这通常比ALL快，因为索引文件通常比数据文件小。</p>
+<ul>
+<li>ALL</li>
+</ul>
+<p>对于每个来自于先前的表的行组合，进行完整的表扫描。如果表是第一个没标记const的表，这通常不好，并且通常在它情况下很差。通常可以增加更多的索引而不要使用ALL，使得行能基于前面的表中的常数值或列值被检索出。</p>
+<h4 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h4><p>possible_keys列指出MySQL能使用哪个索引在该表中找到行,如果该列是NULL，则没有相关的索引</p>
+<h4 id="key"><a href="#key" class="headerlink" title="key"></a>key</h4><p>key列显示MySQL实际决定使用的键（索引）</p>
+<h4 id="key-len"><a href="#key-len" class="headerlink" title="key_len"></a>key_len</h4><p>key_len列显示MySQL决定使用的键长度</p>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p>列显示使用哪个列或常数与key一起从表中选择行。</p>
+<h4 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h4><p>rows列显示MySQL认为它执行查询时必须检查的行数。</p>
+<h4 id="Extra"><a href="#Extra" class="headerlink" title="Extra"></a>Extra</h4><p>该列包含MySQL解决查询的详细信息,下面详细.</p>
+<ul>
+<li>Distinct </li>
+</ul>
+<p>一旦MYSQL找到了与行相联合匹配的行，就不再搜索了 </p>
+<ul>
+<li><p>Not exists </p>
+<p>MYSQL优化了LEFT JOIN，一旦它找到了匹配LEFT JOIN标准的行，就不再搜索了 </p>
+</li>
+<li><p>.Range checked for each </p>
+</li>
+</ul>
+<p>没有找到理想的索引，因此对于从前面表中来的每一个行组合，MYSQL检查使用哪个索引，并用它来从表中返回行。这是使用索引的最慢的连接之一 </p>
+<ul>
+<li>Using filesort </li>
+</ul>
+<p>看到这个的时候，查询就需要优化了。MYSQL需要进行额外的步骤来发现如何对返回的行排序。它根据连接类型以及存储排序键值和匹配条件的全部行的行指针来排序全部行 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">SELECT</div><div class="line">	2 buyOrSell,</div><div class="line">	ctb_trade_id,</div><div class="line">	trade_no,</div><div class="line">	buy_order_no,</div><div class="line">	sell_order_no,</div><div class="line">	customer_buy_uuid,</div><div class="line">	customer_sell_uuid,</div><div class="line">	currency_id,</div><div class="line">	trade_num,</div><div class="line">	trade_price,</div><div class="line">	trade_amount,</div><div class="line">	trade_time,</div><div class="line">	buy_fee,</div><div class="line">	sell_fee,</div><div class="line">	risk_flag,</div><div class="line">	STATUS,</div><div class="line">	create_time,</div><div class="line">	create_by,</div><div class="line">	last_edit_time,</div><div class="line">	last_edit_by</div><div class="line">FROM</div><div class="line">	tr_trade</div><div class="line">WHERE</div><div class="line">	customer_sell_uuid = &apos;e2aaadccb1ed4646ac9d5dbfa53df8cb&apos;</div><div class="line">AND STATUS = 1</div><div class="line">AND currency_id = 30</div><div class="line">AND base_currency_id = 3</div><div class="line">UNION ALL</div><div class="line">	SELECT</div><div class="line">		1 buyOrSell,</div><div class="line">		ctb_trade_id,</div><div class="line">		trade_no,</div><div class="line">		buy_order_no,</div><div class="line">		sell_order_no,</div><div class="line">		customer_buy_uuid,</div><div class="line">		customer_sell_uuid,</div><div class="line">		currency_id,</div><div class="line">		trade_num,</div><div class="line">		trade_price,</div><div class="line">		trade_amount,</div><div class="line">		trade_time,</div><div class="line">		buy_fee,</div><div class="line">		sell_fee,</div><div class="line">		risk_flag,</div><div class="line">		STATUS,</div><div class="line">		create_time,</div><div class="line">		create_by,</div><div class="line">		last_edit_time,</div><div class="line">		last_edit_by</div><div class="line">	FROM</div><div class="line">		tr_trade</div><div class="line">	WHERE</div><div class="line">		customer_buy_uuid = &apos;e2aaadccb1ed4646ac9d5dbfa53df8cb&apos;</div><div class="line">	AND STATUS = 1</div><div class="line">	AND currency_id = 30</div><div class="line">	AND base_currency_id = 3</div><div class="line">	ORDER BY</div><div class="line">		trade_no DESC</div><div class="line">	LIMIT 0,</div><div class="line">	10;</div></pre></td></tr></table></figure>
+<ul>
+<li>Using index</li>
+</ul>
+<p>列数据是从仅仅使用了索引中的信息而没有读取实际的行动的表返回的，这发生在对表的全部的请求列都是同一个索引的部分的时候 </p>
+<ul>
+<li>Using temporary</li>
+</ul>
+<p>看到这个的时候，查询需要优化了。这里，MYSQL需要创建一个临时表来存储结果，这通常发生在对不同的列集进行ORDER BY上，而不是GROUP BY上 </p>
+<ul>
+<li>Using where</li>
+</ul>
+<p>使用了WHERE从句来限制哪些行将与下一张表匹配或者是返回给用户。如果不想返回表中的全部行，并且连接类型ALL或index，这就会发生，或者是查询有问题</p>
+<h2 id="Mysql中的Btree与Hash索引"><a href="#Mysql中的Btree与Hash索引" class="headerlink" title="Mysql中的Btree与Hash索引"></a>Mysql中的Btree与Hash索引</h2><h3 id="B-Tree-索引特征"><a href="#B-Tree-索引特征" class="headerlink" title="B-Tree 索引特征"></a>B-Tree 索引特征</h3><p>B-Tree索引可以被用在像=,&gt;,&gt;=,&lt;,&lt;=和BETWEEN这些比较操作符上。而且还可以用于LIKE操作符，只要它的查询条件是一个不以通配符开头的常量</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM tbl_name WHERE key_col LIKE &apos;Patrick%&apos;;</div><div class="line">SELECT * FROM tbl_name WHERE key_col LIKE other_col;</div></pre></td></tr></table></figure>
+<p> 第一条是因为它以通配符开头，第二条是因为没有使用常量。</p>
+<h3 id="Hash索引"><a href="#Hash索引" class="headerlink" title="Hash索引"></a>Hash索引</h3><ol>
+<li>只能用于对等比较，例如=和&lt;=&gt;操作符（但是快很多）。它们不能被用于像&lt;这样的范围查询条件。假如系统只需要使用像“键值对”的这样的存储结构，尽量使用hash类型索引。<br>优化器不能用hash索引来为ORDER BY操作符加速。（这类索引不能被用于搜索下一个次序的值）<ol>
+<li>MySQL不能判断出两个值之间有多少条数据（这需要使用范围查询操作符来决定使用哪个索引）。假如你将一个MyISAM表或InnoDB表转为一个依靠hash索引的MEMORY表，这可能会影响一些查询。</li>
+<li>只有完整的键才能被用于搜索一行数据（使用了B-Tree索引，那么任何一个键的前缀都可以用于查找）。</li>
 </ol>
-<h3 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h3><ol>
-<li>数据不存在传递关系，即每个属性跟主键有直接关系而不是间接关系</li>
+</li>
 </ol>
+<h2 id="mysql-引擎"><a href="#mysql-引擎" class="headerlink" title="mysql 引擎"></a>mysql 引擎</h2><ul>
+<li>InnoDB 支持事务，支持行级别锁定，支持 B-tree、Full-text 等索引，不支持 Hash 索引；</li>
+<li>MyISAM 不支持事务，支持表级别锁定，支持 B-tree、Full-text 等索引，不支持 Hash 索引；<ul>
+<li>Memory 不支持事务，支持表级别锁定，支持 B-tree、Hash 等索引，不支持 Full-text 索引；</li>
+<li>NDB 支持事务，支持行级别锁定，支持 Hash 索引，不支持 B-tree、Full-text 等索引；</li>
+<li>Archive 不支持事务，支持表级别锁定，不支持 B-tree、Hash、Full-text 等索引；</li>
+</ul>
+</li>
+</ul>
+<h2 id="我自己的总结"><a href="#我自己的总结" class="headerlink" title="我自己的总结"></a>我自己的总结</h2><h3 id="mysql连表更新"><a href="#mysql连表更新" class="headerlink" title="mysql连表更新"></a>mysql连表更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">UPDATE user_points p,</div><div class="line"> (</div><div class="line">	SELECT</div><div class="line">		uuid,</div><div class="line">		sum(number) outnumber</div><div class="line">	FROM</div><div class="line">		user_itl_consume</div><div class="line">	GROUP BY</div><div class="line">		uuid</div><div class="line">) outcome,</div><div class="line"> (</div><div class="line">	SELECT</div><div class="line">		uuid,</div><div class="line">		sum(number) innumber</div><div class="line">	FROM</div><div class="line">		user_itl_income</div><div class="line">	GROUP BY</div><div class="line">		uuid</div><div class="line">) income</div><div class="line">SET p.point = (</div><div class="line">	income.innumber - outcome.outnumber</div><div class="line">)</div><div class="line">WHERE</div><div class="line">	p.uuid = income.uuid</div><div class="line">AND p.uuid = outcome.uuid</div><div class="line">AND income.innumber - outcome.outnumber != p.point;</div></pre></td></tr></table></figure>
+<h3 id="统计时候，cash-when"><a href="#统计时候，cash-when" class="headerlink" title="统计时候，cash when"></a>统计时候，cash when</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">SELECT</div><div class="line">	SUM(</div><div class="line">		CASE</div><div class="line">		WHEN buyOrSell = 1 THEN</div><div class="line">			num * price</div><div class="line">		ELSE</div><div class="line">			0</div><div class="line">		END</div><div class="line">	) ,</div><div class="line">	SUM(</div><div class="line">		CASE</div><div class="line">		WHEN buyOrSell = 2 THEN</div><div class="line">			num * (-price)</div><div class="line">		ELSE</div><div class="line">			0</div><div class="line">		END</div><div class="line">	) c</div><div class="line"></div><div class="line">FROM</div><div class="line">	tr_order  having c&gt;10;</div></pre></td></tr></table></figure>
+<p>###</p>
+<p>备份数据库脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#!/bin/sh </div><div class="line">date=` date +%F`</div><div class="line">echo $date</div><div class="line"> mysqldump -h 172.0.0.1  -uroot -pcc cc  &gt; /data/app/sql/cc-$date.sql</div></pre></td></tr></table></figure>
+<h3 id="开启远端权限"><a href="#开启远端权限" class="headerlink" title="开启远端权限"></a>开启远端权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos;IDENTIFIED BY &apos;&apos; WITH GRANT OPTION;</div></pre></td></tr></table></figure>
+<h3 id="mysql将结果导出文件或者excel"><a href="#mysql将结果导出文件或者excel" class="headerlink" title="mysql将结果导出文件或者excel"></a>mysql将结果导出文件或者excel</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -h 172.1.0.1  -uroot -pcc  --default-character-set=utf8 jeeplus_schema -e &quot;select count(*),uname,phone from user group by uname  having count(*)&gt;1;&quot; &gt; /tmp/repeat.txt</div></pre></td></tr></table></figure>
+<h3 id="mysql-查看表占用"><a href="#mysql-查看表占用" class="headerlink" title="mysql 查看表占用"></a>mysql 查看表占用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">SELECT  *  FROM information_schema.TABLES WHERE  TABLE_SCHEMA=&apos;lian12&apos;\G;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">字段	含义</div><div class="line">Table_catalog	数据表登记目录</div><div class="line">Table_schema	数据表所属的数据库名</div><div class="line">Table_name	表名称</div><div class="line">Table_type	表类型[system view|base table]</div><div class="line">Engine	使用的数据库引擎[MyISAM|CSV|InnoDB]</div><div class="line">Version	版本，默认值10</div><div class="line">Row_format	行格式[Compact|Dynamic|Fixed]</div><div class="line">Table_rows	表里所存多少行数据</div><div class="line">Avg_row_length	平均行长度</div><div class="line">Data_length	数据长度</div><div class="line">Max_data_length	最大数据长度</div><div class="line">Index_length	索引长度</div><div class="line">Data_free	空间碎片</div><div class="line">Auto_increment	做自增主键的自动增量当前值</div><div class="line">Create_time	表的创建时间</div><div class="line">Update_time	表的更新时间</div><div class="line">Check_time	表的检查时间</div><div class="line">Table_collation	表的字符校验编码集</div><div class="line">Checksum	校验和</div><div class="line">Create_options	创建选项</div><div class="line">Table_comment	表的注释、备注</div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -147,10 +318,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/08/24/supervisor-d/" title="supervisor配置文件">
+ <a href="/2017/10/18/机器学习/" title="机器学习">
   <strong>上一篇：</strong><br/>
   <span>
-  supervisor配置文件</span>
+  机器学习</span>
 </a>
 </div>
 
@@ -189,7 +360,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一范式"><span class="toc-number">1.</span> <span class="toc-text">第一范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二范式"><span class="toc-number">2.</span> <span class="toc-text">第二范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三范式"><span class="toc-number">3.</span> <span class="toc-text">第三范式</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库设计三大范式"><span class="toc-number">1.</span> <span class="toc-text">数据库设计三大范式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第二范式"><span class="toc-number">1.1.</span> <span class="toc-text">第二范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三范式"><span class="toc-number">1.2.</span> <span class="toc-text">第三范式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性不能传递依赖于主属性"><span class="toc-number">1.2.1.</span> <span class="toc-text">属性不能传递依赖于主属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些字段总结"><span class="toc-number">2.</span> <span class="toc-text">一些字段总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DATETIME-和TIMESAMP-的区别"><span class="toc-number">2.0.1.</span> <span class="toc-text">DATETIME 和TIMESAMP 的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DECIMAL"><span class="toc-number">2.1.</span> <span class="toc-text">DECIMAL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VARCHAR-和CHAR"><span class="toc-number">2.2.</span> <span class="toc-text">VARCHAR 和CHAR</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VARCHAR"><span class="toc-number">2.2.1.</span> <span class="toc-text">VARCHAR</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CHAR"><span class="toc-number">2.2.2.</span> <span class="toc-text">CHAR</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLOB和TEXT类型"><span class="toc-number">2.3.</span> <span class="toc-text">BLOB和TEXT类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用枚举-ENUM-代替字符串类型"><span class="toc-number">2.4.</span> <span class="toc-text">使用枚举(ENUM)代替字符串类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON-类型"><span class="toc-number">2.5.</span> <span class="toc-text">JSON 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查询"><span class="toc-number">2.5.1.</span> <span class="toc-text">查询</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-Explain详解"><span class="toc-number">3.</span> <span class="toc-text">MySQL Explain详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ID"><span class="toc-number">3.0.1.</span> <span class="toc-text">ID</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#select-type"><span class="toc-number">3.0.2.</span> <span class="toc-text">select_type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#table"><span class="toc-number">3.0.3.</span> <span class="toc-text">table</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#type"><span class="toc-number">3.0.4.</span> <span class="toc-text">type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#possible-keys"><span class="toc-number">3.0.5.</span> <span class="toc-text">possible_keys</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#key"><span class="toc-number">3.0.6.</span> <span class="toc-text">key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#key-len"><span class="toc-number">3.0.7.</span> <span class="toc-text">key_len</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ref"><span class="toc-number">3.0.8.</span> <span class="toc-text">ref</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rows"><span class="toc-number">3.0.9.</span> <span class="toc-text">rows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Extra"><span class="toc-number">3.0.10.</span> <span class="toc-text">Extra</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql中的Btree与Hash索引"><span class="toc-number">4.</span> <span class="toc-text">Mysql中的Btree与Hash索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Tree-索引特征"><span class="toc-number">4.1.</span> <span class="toc-text">B-Tree 索引特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hash索引"><span class="toc-number">4.2.</span> <span class="toc-text">Hash索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-引擎"><span class="toc-number">5.</span> <span class="toc-text">mysql 引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我自己的总结"><span class="toc-number">6.</span> <span class="toc-text">我自己的总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql连表更新"><span class="toc-number">6.1.</span> <span class="toc-text">mysql连表更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#统计时候，cash-when"><span class="toc-number">6.2.</span> <span class="toc-text">统计时候，cash when</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启远端权限"><span class="toc-number">6.3.</span> <span class="toc-text">开启远端权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql将结果导出文件或者excel"><span class="toc-number">6.4.</span> <span class="toc-text">mysql将结果导出文件或者excel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-查看表占用"><span class="toc-number">6.5.</span> <span class="toc-text">mysql 查看表占用</span></a></li></ol></li></ol>
  
   </div>
 
@@ -213,11 +384,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/mysql/" title="mysql">mysql<sup>3</sup></a></li>
+			<li><a href="/categories/mysql/" title="mysql">mysql<sup>2</sup></a></li>
 		  
 		
 		  
@@ -228,8 +395,6 @@
 			<li><a href="/categories/总结/" title="总结">总结<sup>3</sup></a></li>
 		  
 		
-		  
-			<li><a href="/categories/程序员/" title="程序员">程序员<sup>1</sup></a></li>
 		  
 		
 		  
@@ -258,11 +423,11 @@
 			
 		
 			
-				<li><a href="/tags/程序分级/" title="程序分级">程序分级<sup>1</sup></a></li>
+				<li><a href="/tags/加班/" title="加班">加班<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/配置文件/" title="配置文件">配置文件<sup>1</sup></a></li>
+				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
 			
 		
 			
@@ -278,11 +443,7 @@
 			
 		
 			
-				<li><a href="/tags/多线程/" title="多线程">多线程<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/加班/" title="加班">加班<sup>1</sup></a></li>
+				<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
 			
 		
 			
@@ -290,19 +451,13 @@
 			
 		
 			
-				<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/加班夜/" title="加班夜">加班夜<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
-			
 		
 			
-				<li><a href="/tags/mysql总结/" title="mysql总结">mysql总结<sup>1</sup></a></li>
+		
 			
 		
 		</ul>
