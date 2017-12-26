@@ -488,6 +488,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;![CDATA[ when min(starttime)&lt;=&apos;12:00&apos; and max(endtime)&lt;=&apos;12:00&apos; ]]&gt;</div></pre></td></tr></table></figure>
 <h3 id="分组-计数"><a href="#分组-计数" class="headerlink" title="分组, 计数"></a>分组, 计数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Map&lt;string long&gt; result =  </div><div class="line">        items.stream().collect(  </div><div class="line">                Collectors.groupingBy(  </div><div class="line">                        Function.identity(), Collectors.counting()  </div><div class="line">                )  </div><div class="line">        );</div></pre></td></tr></table></figure>
 <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">int arr[] = &#123;1, 4, 2, 8, 5&#125;;</div><div class="line">     Arrays.parallelSort(arr);</div><div class="line">     for(int i : arr)&#123;</div><div class="line">         System.out.print(i + &quot; &quot;);</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<h3 id="优雅的写入文件"><a href="#优雅的写入文件" class="headerlink" title="优雅的写入文件"></a>优雅的写入文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PrintStream out = new PrintStream(newFileOutputStream(&quot;/Users/cong/Desktop/pass/passwd.txt&quot;));</div><div class="line">out.println(stringBuilder.toString());</div></pre></td></tr></table></figure>
+<h3 id="读取大文件"><a href="#读取大文件" class="headerlink" title="读取大文件"></a>读取大文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">FileChannel fileChannel =FileChannel.open(Paths.get(&quot;/phoenix/2.txt&quot;), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);</div><div class="line"> MappedByteBuffer   mbb = fileChannel.map(FileChannel.MapMode.READ_ONLY, i, 1024000);</div><div class="line"> String p = forName(&quot;utf-8&quot;).decode(mbb).toString().trim();</div></pre></td></tr></table></figure>
 
         
         
@@ -624,8 +626,6 @@
 		  
 		
 		  
-		
-		  
 			<li><a href="/categories/随笔/" title="随笔">随笔<sup>6</sup></a></li>
 		  
 		
@@ -651,18 +651,6 @@
 			
 		
 			
-				<li><a href="/tags/加班/" title="加班">加班<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/redis/" title="redis">redis<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/运维/" title="运维">运维<sup>1</sup></a></li>
 			
 		
@@ -671,7 +659,7 @@
 			
 		
 			
-				<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
+				<li><a href="/tags/redis/" title="redis">redis<sup>1</sup></a></li>
 			
 		
 			
@@ -679,13 +667,19 @@
 			
 		
 			
+				<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/加班夜/" title="加班夜">加班夜<sup>1</sup></a></li>
 			
 		
 			
-		
+				<li><a href="/tags/总结/" title="总结">总结<sup>1</sup></a></li>
 			
 		
+			
+				<li><a href="/tags/加班/" title="加班">加班<sup>1</sup></a></li>
 			
 		
 		</ul>
